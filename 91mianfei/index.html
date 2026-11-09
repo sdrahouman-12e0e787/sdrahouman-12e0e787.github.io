@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>91免费版官网入口 - 功能解析与使用指引</title>
+  <meta name="description" content="91免费版官网入口提供免费版功能清单、版本更新记录、安装步骤与兼容性说明。适合初次接触或需要对比免费版与付费版差异的用户查阅。">
+  <meta name="keywords" content="免费版功能对比,安装包下载,版本更新日志,兼容性要求,新手指引">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231a2b4c'/%3E%3Ctext x='32' y='44' font-size='32' font-family='Arial,sans-serif' font-weight='700' fill='%23ffffff' text-anchor='middle'%3E91%3C/text%3E%3C/svg%3E">
+  <style>
+    :root {
+      --ink: #1a1f2b;
+      --ink-soft: #3e4a5e;
+      --muted: #6b7a90;
+      --bg: #f6f8fc;
+      --panel: #ffffff;
+      --line: #e2e8f0;
+      --brand: #1a2b4c;
+      --brand-light: #2f4b7c;
+      --accent: #e07a2c;
+      --accent-soft: #fdf2e7;
+      --good: #1e7a4c;
+      --radius-s: 8px;
+      --radius-m: 14px;
+      --radius-l: 22px;
+      --shadow-s: 0 1px 3px rgba(0,0,0,0.04);
+      --shadow-m: 0 4px 16px rgba(0,0,0,0.06);
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+      --max-width: 1320px;
+      --sticky-offset: 112px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: var(--sticky-offset); }
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.65;
+      font-size: 15px;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--brand-light); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    img { max-width: 100%; height: auto; display: block; }
+    ul, ol { padding-left: 1.2em; }
+    li { margin-bottom: 0.3em; }
+
+    /* ── 吸顶公告条 + 页头 ── */
+    .sticky-top {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--panel);
+      box-shadow: 0 1px 0 var(--line);
+    }
+    .announce-bar {
+      background: var(--brand);
+      color: #fff;
+      font-size: 13px;
+      padding: 6px 0;
+      text-align: center;
+      letter-spacing: 0.2px;
+    }
+    .announce-bar .container { display: flex; justify-content: center; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .announce-bar a { color: #ffd9a8; text-decoration: underline; font-weight: 500; }
+    .announce-bar a:hover { color: #fff; }
+
+    .site-header {
+      padding: 10px 0;
+      background: var(--panel);
+    }
+    .site-header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+    .brand svg { display: block; }
+    .brand-text {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: var(--brand);
+      letter-spacing: -0.02em;
+      white-space: nowrap;
+    }
+    .main-nav {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .main-nav a {
+      font-size: 14px;
+      color: var(--ink-soft);
+      padding: 6px 12px;
+      border-radius: 20px;
+      transition: background 0.15s, color 0.15s;
+      white-space: nowrap;
+    }
+    .main-nav a:hover {
+      background: var(--bg);
+      color: var(--brand);
+      text-decoration: none;
+    }
+    .header-actions { display: flex; gap: 10px; align-items: center; flex-shrink: 0; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 8px 18px;
+      border-radius: 30px;
+      font-size: 14px;
+      font-weight: 600;
+      border: 1.5px solid transparent;
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s, color 0.15s;
+      text-decoration: none;
+      line-height: 1.3;
+    }
+    .btn-primary { background: var(--brand); color: #fff; border-color: var(--brand); }
+    .btn-primary:hover { background: var(--brand-light); border-color: var(--brand-light); text-decoration: none; }
+    .btn-outline { background: transparent; color: var(--brand); border-color: var(--line); }
+    .btn-outline:hover { background: var(--bg); border-color: var(--brand-light); text-decoration: none; }
+    .btn-accent { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .btn-accent:hover { background: #c96a20; border-color: #c96a20; text-decoration: none; }
+
+    .container { max-width: var(--max-width); margin: 0 auto; padding: 0 20px; }
+
+    /* ── 三栏门户布局 ── */
+    .page-grid {
+      display: grid;
+      grid-template-columns: 180px minmax(0, 1fr) 280px;
+      gap: 28px;
+      padding: 28px 0 48px;
+      align-items: start;
+    }
+    .left-sidebar { position: sticky; top: var(--sticky-offset); }
+    .right-sidebar { position: sticky; top: var(--sticky-offset); }
+
+    /* 左频道索引 */
+    .channel-index {
+      background: var(--panel);
+      border-radius: var(--radius-m);
+      box-shadow: var(--shadow-s);
+      padding: 16px 0;
+      border: 1px solid var(--line);
+    }
+    .channel-index h3 {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--muted);
+      padding: 0 18px 10px;
+      font-weight: 600;
+    }
+    .channel-index a {
+      display: block;
+      padding: 8px 18px;
+      font-size: 14px;
+      color: var(--ink-soft);
+      border-left: 3px solid transparent;
+      transition: background 0.15s, border-color 0.15s, color 0.15s;
+    }
+    .channel-index a:hover { background: var(--bg); color: var(--brand); border-left-color: var(--accent); text-decoration: none; }
+    .channel-index a.active { border-left-color: var(--accent); color: var(--brand); font-weight: 600; background: var(--accent-soft); }
+
+    /* 右辅助栏 */
+    .sidebar-card {
+      background: var(--panel);
+      border-radius: var(--radius-m);
+      box-shadow: var(--shadow-s);
+      border: 1px solid var(--line);
+      padding: 18px;
+      margin-bottom: 20px;
+    }
+    .sidebar-card h3 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--brand);
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--line);
+    }
+    .update-list { list-style: none; padding: 0; }
+    .update-list li {
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--line);
+      font-size: 13px;
+      color: var(--ink-soft);
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+    }
+    .update-list li:last-child { border-bottom: none; }
+    .update-badge {
+      font-size: 11px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: 600;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .update-list a { color: var(--ink-soft); }
+    .update-list a:hover { color: var(--brand); }
+
+    .hot-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .hot-tags a {
+      font-size: 13px;
+      background: var(--bg);
+      color: var(--ink-soft);
+      padding: 4px 12px;
+      border-radius: 20px;
+      border: 1px solid var(--line);
+      transition: background 0.15s, border-color 0.15s, color 0.15s;
+    }
+    .hot-tags a:hover { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); text-decoration: none; }
+
+    /* ── 主内容区 ── */
+    .main-content { display: flex; flex-direction: column; gap: 32px; }
+
+    .hero {
+      background: linear-gradient(135deg, #1a2b4c 0%, #2f4b7c 100%);
+      border-radius: var(--radius-l);
+      padding: 38px 36px;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      right: -40px;
+      bottom: -40px;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.04);
+      pointer-events: none;
+    }
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      color: #fff;
+      position: relative;
+      z-index: 1;
+    }
+    .hero p {
+      font-size: 15px;
+      color: rgba(255,255,255,0.85);
+      max-width: 620px;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+      margin-top: 4px;
+    }
+    .hero-actions .btn-primary { background: #fff; color: var(--brand); border-color: #fff; }
+    .hero-actions .btn-primary:hover { background: #e8edf5; border-color: #e8edf5; }
+    .hero-actions .btn-outline { border-color: rgba(255,255,255,0.35); color: #fff; }
+    .hero-actions .btn-outline:hover { background: rgba(255,255,255,0.08); }
+
+    .hero-stats {
+      display: flex;
+      gap: 28px;
+      margin-top: 8px;
+      position: relative;
+      z-index: 1;
+      flex-wrap: wrap;
+    }
+    .hero-stat { display: flex; flex-direction: column; }
+    .hero-stat .num { font-size: 1.5rem; font-weight: 800; color: #ffd9a8; }
+    .hero-stat .label { font-size: 12px; color: rgba(255,255,255,0.6); }
+
+    /* 板块通用 */
+    .section { }
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+    .section-head h2 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--brand);
+      letter-spacing: -0.01em;
+    }
+    .section-head .more-link { font-size: 13px; color: var(--muted); }
+    .section-head .more-link:hover { color: var(--brand); }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 18px;
+    }
+    .card {
+      background: var(--panel);
+      border-radius: var(--radius-m);
+      box-shadow: var(--shadow-s);
+      border: 1px solid var(--line);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .card:hover { box-shadow: var(--shadow-m); transform: translateY(-2px); }
+    .card-img { position: relative; }
+    .card-img img { width: 100%; height: 150px; object-fit: cover; }
+    .card-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: rgba(26,43,76,0.85);
+      color: #fff;
+      font-size: 11px;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-weight: 600;
+      backdrop-filter: blur(4px);
+    }
+    .card-body { padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+    .card-body h3 { font-size: 15px; font-weight: 700; color: var(--ink); line-height: 1.35; }
+    .card-body h3 a { color: var(--ink); }
+    .card-body h3 a:hover { color: var(--brand-light); text-decoration: none; }
+    .card-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .card-tags span {
+      font-size: 11px;
+      background: var(--bg);
+      color: var(--muted);
+      padding: 2px 8px;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+    }
+    .card-desc { font-size: 13px; color: var(--ink-soft); line-height: 1.55; flex: 1; }
+    .card-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: var(--muted);
+      padding-top: 8px;
+      border-top: 1px solid var(--line);
+      margin-top: 4px;
+    }
+    .card-meta .hot { color: var(--accent); font-weight: 600; }
+
+    /* 最新更新列表 */
+    .update-feed { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0; }
+    .update-feed li {
+      display: flex;
+      gap: 14px;
+      padding: 12px 16px;
+      background: var(--panel);
+      border-radius: var(--radius-s);
+      border: 1px solid var(--line);
+      align-items: flex-start;
+      margin-bottom: 8px;
+    }
+    .update-feed .time { font-size: 12px; color: var(--muted); white-space: nowrap; min-width: 68px; padding-top: 2px; }
+    .update-feed .feed-text { font-size: 14px; color: var(--ink-soft); }
+    .update-feed .feed-text strong { color: var(--ink); font-weight: 600; }
+    .update-feed .feed-tag {
+      font-size: 11px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      padding: 1px 8px;
+      border-radius: 10px;
+      margin-left: 6px;
+      white-space: nowrap;
+      font-weight: 500;
+    }
+
+    /* 分类入口 */
+    .cat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .cat-item {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-m);
+      padding: 16px 14px;
+      text-align: center;
+      transition: background 0.15s, border-color 0.15s, box-shadow 0.15s;
+    }
+    .cat-item:hover { background: var(--accent-soft); border-color: var(--accent); box-shadow: var(--shadow-s); text-decoration: none; }
+    .cat-item .cat-icon { font-size: 22px; margin-bottom: 6px; }
+    .cat-item .cat-name { font-size: 14px; font-weight: 600; color: var(--ink); }
+    .cat-item .cat-count { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+    /* 深度解析 */
+    .deep-dive {
+      background: var(--panel);
+      border-radius: var(--radius-m);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-s);
+      padding: 26px 28px;
+    }
+    .deep-dive h2 { font-size: 1.3rem; font-weight: 700; color: var(--brand); margin-bottom: 14px; }
+    .deep-dive h3 { font-size: 1.05rem; font-weight: 700; color: var(--brand-light); margin: 20px 0 8px; }
+    .deep-dive h3:first-of-type { margin-top: 0; }
+    .deep-dive p { margin-bottom: 10px; color: var(--ink-soft); }
+    .deep-dive ul, .deep-dive ol { margin-bottom: 12px; color: var(--ink-soft); }
+    .deep-dive li { margin-bottom: 4px; }
+    .deep-dive .highlight-box {
+      background: var(--accent-soft);
+      border-left: 3px solid var(--accent);
+      padding: 12px 16px;
+      border-radius: 0 var(--radius-s) var(--radius-s) 0;
+      margin: 14px 0;
+      font-size: 14px;
+      color: var(--ink-soft);
+    }
+
+    /* 体验指南 */
+    .guide-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .guide-step {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-m);
+      padding: 18px 20px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .guide-step .step-num {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--brand);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+    .guide-step h4 { font-size: 15px; font-weight: 700; margin-bottom: 4px; color: var(--ink); }
+    .guide-step p { font-size: 13px; color: var(--ink-soft); }
+
+    /* FAQ */
+    .faq-list { display: flex; flex-direction: column; gap: 8px; }
+    .faq-list details {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-s);
+      padding: 0;
+      overflow: hidden;
+    }
+    .faq-list details[open] { border-color: var(--brand-light); }
+    .faq-list summary {
+      padding: 14px 18px;
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--ink);
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.15s;
+    }
+    .faq-list summary:hover { background: var(--bg); }
+    .faq-list summary::-webkit-details-marker { display: none; }
+    .faq-list summary::after { content: '+'; font-size: 18px; color: var(--muted); font-weight: 400; }
+    .faq-list details[open] summary::after { content: '−'; }
+    .faq-list .faq-answer { padding: 0 18px 16px; font-size: 14px; color: var(--ink-soft); line-height: 1.7; }
+
+    /* 评论 */
+    .comment-list { display: flex; flex-direction: column; gap: 10px; }
+    .comment-item {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-s);
+      padding: 14px 18px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    .comment-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+      border: 1px solid var(--line);
+    }
+    .comment-body { flex: 1; }
+    .comment-header { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; margin-bottom: 2px; }
+    .comment-name { font-weight: 600; font-size: 13px; color: var(--brand); }
+    .comment-date { font-size: 11px; color: var(--muted); }
+    .comment-text { font-size: 13px; color: var(--ink-soft); line-height: 1.6; }
+
+    /* 相关资讯 */
+    .news-list { display: flex; flex-direction: column; gap: 12px; }
+    .news-item {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-m);
+      padding: 16px 18px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .news-item .news-date { font-size: 12px; color: var(--muted); white-space: nowrap; min-width: 80px; padding-top: 2px; }
+    .news-item h4 { font-size: 14px; font-weight: 600; margin-bottom: 2px; }
+    .news-item h4 a { color: var(--ink); }
+    .news-item h4 a:hover { color: var(--brand-light); }
+    .news-item p { font-size: 13px; color: var(--ink-soft); }
+
+    /* 相关推荐 */
+    .related-tags { display: flex; flex-wrap: wrap; gap: 10px; }
+    .related-tags a {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      padding: 8px 16px;
+      border-radius: 30px;
+      font-size: 13px;
+      color: var(--ink-soft);
+      transition: background 0.15s, border-color 0.15s, color 0.15s;
+    }
+    .related-tags a:hover { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); text-decoration: none; }
+
+    /* 热门榜单 */
+    .rank-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 6px; counter-reset: rank; }
+    .rank-list li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-s);
+      padding: 10px 16px;
+      counter-increment: rank;
+      font-size: 14px;
+    }
+    .rank-list li::before {
+      content: counter(rank);
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      background: var(--bg);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .rank-list li:nth-child(1)::before { background: #fff3d4; color: #b8730e; }
+    .rank-list li:nth-child(2)::before { background: #e8edf5; color: #5a6a82; }
+    .rank-list li:nth-child(3)::before { background: #f0e6da; color: #8b5e3c; }
+    .rank-list .rank-name { font-weight: 600; color: var(--ink); flex: 1; }
+    .rank-list .rank-score { font-size: 12px; color: var(--accent); font-weight: 600; }
+
+    /* 页尾 */
+    .site-footer {
+      background: var(--brand);
+      color: rgba(255,255,255,0.7);
+      padding: 40px 0 24px;
+      margin-top: 20px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 32px;
+      margin-bottom: 28px;
+    }
+    .footer-brand .brand-text { color: #fff; font-size: 1.3rem; margin-bottom: 8px; }
+    .footer-brand p { font-size: 13px; line-height: 1.6; max-width: 260px; }
+    .footer-col h4 { font-size: 14px; color: #fff; margin-bottom: 10px; font-weight: 600; }
+    .footer-col a { display: block; font-size: 13px; color: rgba(255,255,255,0.6); padding: 3px 0; }
+    .footer-col a:hover { color: #fff; text-decoration: underline; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 18px;
+      font-size: 12px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+      color: rgba(255,255,255,0.4);
+    }
+
+    /* ── 响应式 ── */
+    @media (max-width: 1024px) {
+      .page-grid { grid-template-columns: minmax(0, 1fr) 260px; }
+      .left-sidebar { display: none; }
+      .cat-grid { grid-template-columns: repeat(4, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 740px) {
+      .page-grid { grid-template-columns: 1fr; }
+      .right-sidebar { position: static; }
+      .hero { padding: 28px 22px; }
+      .hero h1 { font-size: 1.7rem; }
+      .cat-grid { grid-template-columns: repeat(2, 1fr); }
+      .guide-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 20px; }
+      .main-nav { display: none; }
+      .header-actions .btn-outline { display: none; }
+      .update-feed li { flex-wrap: wrap; gap: 4px; }
+      .update-feed .time { min-width: auto; }
+      .section-head h2 { font-size: 1.15rem; }
+      .card-grid { grid-template-columns: 1fr 1fr; }
+      :root { --sticky-offset: 100px; }
+    }
+    @media (max-width: 480px) {
+      .card-grid { grid-template-columns: 1fr; }
+      .cat-grid { grid-template-columns: 1fr 1fr; }
+      .hero-stats { gap: 16px; }
+    }
+    /* 焦点可见 */
+    a:focus-visible, button:focus-visible, summary:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+  </style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<!-- 吸顶公告条 + 页头 -->
+<div class="sticky-top">
+  <div class="announce-bar">
+    <div class="container">
+      <span>📢 11月8日更新：免费版 v3.2.1 发布，新增批量导出与暗色模式</span>
+      <a href="#latest-updates">查看更新日志</a>
+    </div>
+  </div>
+  <header class="site-header">
+    <div class="container">
+      <div class="brand">
+        <svg width="36" height="36" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect width="64" height="64" rx="14" fill="#1a2b4c"/>
+          <text x="32" y="42" font-size="26" font-family="Arial, sans-serif" font-weight="800" fill="#ffffff" text-anchor="middle">91</text>
+        </svg>
+        <span class="brand-text">91免费版官网入口</span>
+      </div>
+      <nav class="main-nav" aria-label="主导航">
+        <a href="#overview">功能概览</a>
+        <a href="#featured">精选功能</a>
+        <a href="#latest-updates">更新日志</a>
+        <a href="#categories">分类索引</a>
+        <a href="#deep-dive">深度解析</a>
+        <a href="#faq">常见问题</a>
+      </nav>
+      <div class="header-actions">
+        <a href="#featured" class="btn btn-outline">功能清单</a>
+        <a href="#latest-updates" class="btn btn-primary">立即下载</a>
+      </div>
+    </div>
+  </header>
+</div>
+
+<!-- 主内容区：三栏门户 -->
+<div class="container">
+  <div class="page-grid">
+
+    <!-- 左频道索引 -->
+    <aside class="left-sidebar" aria-label="频道索引">
+      <div class="channel-index">
+        <h3>频道索引</h3>
+        <a href="#overview">产品概览</a>
+        <a href="#featured">核心功能</a>
+        <a href="#latest-updates">版本动态</a>
+        <a href="#categories">功能分类</a>
+        <a href="#deep-dive">深度评测</a>
+        <a href="#guide">使用指南</a>
+        <a href="#faq">常见问答</a>
+        <a href="#comments">用户反馈</a>
+        <a href="#news">相关资讯</a>
+        <a href="#related">延伸阅读</a>
+        <a href="#ranking">热门排行</a>
+      </div>
+    </aside>
+
+    <!-- 中间主内容 -->
+    <main class="main-content" id="main-content">
+
+      <!-- 首屏 -->
+      <section class="hero" id="overview">
+        <h1>91免费版官网入口</h1>
+        <p>汇聚91免费版的功能清单、版本更新记录、安装配置说明与用户实操反馈，帮助初次接触或正在评估免费版工具的用户快速了解核心能力与使用边界。</p>
+        <div class="hero-actions">
+          <a href="#featured" class="btn btn-primary">查看功能清单</a>
+          <a href="#guide" class="btn btn-outline">安装配置指南</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat"><span class="num">28</span><span class="label">核心功能模块</span></div>
+          <div class="hero-stat"><span class="num">v3.2.1</span><span class="label">最新版本</span></div>
+          <div class="hero-stat"><span class="num">12.6万</span><span class="label">周活跃用户</span></div>
+        </div>
+      </section>
+
+      <!-- 主题领域概览 -->
+      <section class="section" id="domain-overview">
+        <div class="section-head"><h2>免费版功能领域概览</h2></div>
+        <div style="background:var(--panel);border:1px solid var(--line);border-radius:var(--radius-m);padding:22px 24px;box-shadow:var(--shadow-s);">
+          <p style="margin-bottom:10px;color:var(--ink-soft);">91免费版是一款面向日常办公与轻量创作场景的多功能工具软件，其免费版覆盖了文件管理、格式转换、批量重命名、剪贴板历史、快速截图、屏幕录制、PDF 合并拆分、图片压缩等基础能力。与付费版相比，免费版在单次处理数量、导出分辨率、水印标识和自动化规则数量上有所限制，但核心功能均可无限期使用，不设试用期。</p>
+          <p style="margin-bottom:10px;color:var(--ink-soft);">当前版本 v3.2.1 于 2026 年 11 月 5 日发布，重点改进了批量导出时的文件命名规则，并新增暗色模式适配。免费版用户可使用的功能板块包括：文件批量处理（单次上限 20 个文件）、PDF 工具箱（合并/拆分/加密/解密）、图片批处理（压缩/格式转换/尺寸调整）、屏幕录制（单次最长 10 分钟，导出带角落水印）、剪贴板历史（保留最近 200 条）、快速截图（支持滚动截图与标注）。</p>
+          <p style="color:var(--ink-soft);">对于个人用户和小型团队来说，免费版已能满足绝大多数日常需求；如果需要处理超过 50 个文件的批量任务、导出无水印高清视频或设置超过 5 条自动化规则，则需要考虑升级到付费版本。</p>
+        </div>
+      </section>
+
+      <!-- 精选功能推荐 -->
+      <section class="section" id="featured">
+        <div class="section-head">
+          <h2>精选功能模块</h2>
+          <a href="#categories" class="more-link">查看全部分类 →</a>
+        </div>
+        <div class="card-grid" id="featured-grid">
+          <!-- 卡片1 -->
+          <article class="card">
+            <div class="card-img">
+              <img src="https://picsum.photos/seed/91batchrename01/400/300" alt="批量重命名功能界面截图" width="400" height="300" loading="lazy">
+              <span class="card-badge">文件处理</span>
+            </div>
+            <div class="card-body">
+              <h3><a href="#featured">批量重命名工具</a></h3>
+              <div class="card-tags"><span>文件名规则</span><span>序号生成</span><span>正则替换</span></div>
+              <p class="card-desc">支持按序号、日期、原始名称组合生成新文件名，可自定义起始编号与位数，免费版单次处理上限 20 个文件。</p>
+              <div class="card-meta"><span class="hot">🔥 热度 4.8</span><span>更新于 11-05</span></div>
+            </div>
+          </article>
+          <!-- 卡片2 -->
+          <article class="card">
+            <div class="card-img">
+              <img src="https://picsum.photos/seed/91pdfmerge02/400/300" alt="PDF合并拆分工具箱界面" width="400" height="300" loading="lazy">
+              <span class="card-badge">PDF工具</span>
+            </div>
+            <div class="card-body">
+              <h3><a href="#featured">PDF 合并与拆分</a></h3>
+              <div class="card-tags"><span>合并PDF</span><span>拆分页面</span><span>加密解密</span></div>
+              <p class="card-desc">支持将多个 PDF 文件合并为一个，或按页码范围拆分单个文件。免费版合并上限 10 个文件，单文件不超过 50MB。</p>
+              <div class="card-meta"><span class="hot">🔥 热度 4.6</span><span>更新于 10-28</span></div>
+            </div>
+          </article>
+          <!-- 卡片3 -->
+          <article class="card">
+            <div class="card-img">
+              <img src="https://picsum.photos/seed/91imgcompress03/400/300" alt="图片批量压缩设置面板" width="400" height="300" loading="lazy">
+              <span class="card-badge">图片处理</span>
+            </div>
+            <div class="card-body">
+              <h3><a href="#featured">图片批量压缩</a></h3>
+              <div class="card-tags"><span>压缩比调节</span><span>批量导出</span><span>格式转换</span></div>
+              <p class="card-desc">支持 JPEG/PNG/WebP 批量压缩与格式互转，可自定义压缩质量与输出尺寸，免费版单次最多处理 15 张图片。</p>
+              <div class="card-meta"><span class="hot">🔥 热度 4.5</span><span>更新于 11-01</span></div>
+            </div>
+          </article>
+          <!-- 卡片4 -->
+          <article class="card">
+            <div class="card-img">
+              <img src="https://picsum.photos/seed/91screenrec04/400/300" alt="屏幕录制参数设置界面" width="400" height="300" loading="lazy">
+              <span class="card-badge">屏幕录制</span>
+            </div>
+            <div class="card-body">
+              <h3><a href="#featured">屏幕录制与截图</a></h3>
+              <div class="card-tags"><span>区域录制</span><span>滚动截图</span><span>标注工具</span></div>
+              <p class="card-desc">支持全屏/区域/窗口三种录制模式，截图工具自带箭头、方框、文字标注。免费版单次录制最长 10 分钟，导出带角落水印。</p>
+              <div class="card-meta"><span class="hot">🔥 热度 4.4</span><span>更新于 10-30</span></div>
+            </div>
+          </article>
+          <!-- 卡片5 -->
+          <article class="card">
+            <div class="card-img">
+              <img src="https://picsum.photos/seed/91clipboard05/400/300" alt="剪贴板历史管理面板" width="400" height="300" loading="lazy">
+              <span class="card-badge">效率工具</span>
+            </div>
+            <div class="card-body">
+              <h3><a href="#featured">剪贴板历史管理</a></h3>
+              <div class="card-tags"><span>历史记录</span><span>快速粘贴</span><span>固定收藏</span></div>
+              <p class="card-desc">自动记录最近 200 条剪贴板内容，支持文本与图片，可通过快捷键呼出面板快速重贴或固定常用片段。</p>
+              <div class="card-meta"><span class="hot">🔥 热度 4.3</span><span>更新于 11-02</span></div>
+            </div>
+          </article>
+          <!-- 卡片6 -->
+          <article class="card">
+            <div class="card-img">
+              <img src="https://picsum.photos/seed/91formatconv06/400/300" alt="文件格式转换工具界面" width="400" height="300" loading="lazy">
+              <span class="card-badge">格式转换</span>
+            </div>
+            <div class="card-body">
+              <h3><a href="#featured">文件格式转换</a></h3>
+              <div class="card-tags"><span>文档转换</span><span>图片转换</span><span>批量输出</span></div>
+              <p class="card-desc">支持文档、图片、音视频三大类共 18 种格式互转，免费版单次最多转换 10 个文件，输出文件可自定义存放路径。</p>
+              <div class="card-meta"><span class="hot">🔥 热度 4.2</span><span>更新于 10-26</span></div>
+            </div>
+          </article>
+          <!-- 卡片7 -->
+          <article class="card">
+            <div class="card-img">
+              <img src="https://picsum.photos/seed/91watermark07/400/300" alt="图片加水印功能设置" width="400" height="300" loading="lazy">
+              <span class="card-badge">图片处理</span>
+            </div>
+            <div class="card-body">
+              <h3><a href="#featured">图片批量加水印</a></h3>
+              <div class="card-tags"><span>文字水印</span><span>图片水印</span><span>位置调整</span></div>
+              <p class="card-desc">支持文字与图片两种水印类型，可调整透明度、旋转角度与九宫格位置，免费版单次处理上限 10 张，导出保留原始分辨率。</p>
+              <div class="card-meta"><span class="hot">🔥 热度 4.1</span><span>更新于 11-03</span></div>
+            </div>
+          </article>
+          <!-- 卡片8 -->
+          <article class="card">
+            <div class="card-img">
+              <img src="https://picsum.photos/seed/91autosave08/400/300" alt="自动化规则配置界面" width="400" height="300" loading="lazy">
+              <span class="card-badge">自动化</span>
+            </div>
+            <div class="card-body">
+              <h3><a href="#featured">自动化规则设置</a></h3>
+              <div class="card-tags"><span>监听文件夹</span><span>自动处理</span><span>规则触发</span></div>
+              <p class="card-desc">可设置监控文件夹，当有新文件存入时自动执行重命名、压缩或格式转换。免费版最多同时启用 3 条规则，每条规则支持 2 个操作动作。</p>
+              <div class="card-meta"><span class="hot">🔥 热度 4.0</span><span>更新于 10-29</span></div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- 最新更新 / 动态 -->
+      <section class="section" id="latest-updates">
+        <div class="section-head">
+          <h2>版本更新与功能动态</h2>
+          <span style="font-size:13px;color:var(--muted);">更新于 2026-11-08</span>
+        </div>
+        <ul class="update-feed">
+          <li><span class="time">今天 09:30</span><span class="feed-text"><strong>免费版 v3.2.1 正式发布</strong><span class="feed-tag">版本更新</span> — 新增批量导出文件名规则预设，修复暗色模式下部分按钮对比度不足的问题。</span></li>
+          <li><span class="time">昨天 16:20</span><span class="feed-text"><strong>PDF 拆分功能支持按书签层级拆分</strong><span class="feed-tag">功能优化</span> — 在拆分选项中新增"按一级书签拆分"，适用于结构化电子书与报告文档。</span></li>
+          <li><span class="time">11月6日</span><span class="feed-text"><strong>屏幕录制新增"跟随鼠标"选项</strong><span class="feed-tag">功能新增</span> — 录制区域可自动跟随鼠标位置移动，适合制作操作演示类视频。</span></li>
+          <li><span class="time">11月5日</span><span class="feed-text"><strong>批量重命名支持正则表达式替换</strong><span class="feed-tag">功能新增</span> — 高级模式下可使用正则匹配规则批量修改文件名，免费版与付费版同步开放。</span></li>
+          <li><span class="time">11月3日</span><span class="feed-text"><strong>图片压缩算法升级至 v2.4</strong><span class="feed-tag">性能优化</span> — 在保持画质的前提下平均压缩率提升约 12%，WebP 格式导出速度提升明显。</span></li>
+          <li><span class="time">11月1日</span><span class="feed-text"><strong>剪贴板历史容量从 150 条扩容至 200 条</strong><span class="feed-tag">容量调整</span> — 免费版用户无需额外操作，更新后自动生效。</span></li>
+          <li><span class="time">10月30日</span><span class="feed-text"><strong>新增暗色模式适配</strong><span class="feed-tag">界面更新</span> — 跟随系统主题自动切换，也可在设置中手动选择浅色/深色/跟随系统。</span></li>
+          <li><span class="time">10月28日</span><span class="feed-text"><strong>修复格式转换中文路径乱码问题</strong><span class="feed-tag">问题修复</span> — 涉及 Windows 10/11 系统下含中文字符的文件夹路径，已确认修复。</span></li>
+          <li><span class="time">10月26日</span><span class="feed-text"><strong>自动化规则增加"文件大小"触发条件</strong><span class="feed-tag">功能新增</span> — 可设定大于或小于指定大小的文件才执行后续操作，免费版同步支持。</span></li>
+          <li><span class="time">10月24日</span><span class="feed-text"><strong>官网帮助文档更新至 v3.2 版本</strong><span class="feed-tag">文档更新</span> — 补充了批量导出、暗色模式适配和正则替换的图文说明。</span></li>
+        </ul>
+      </section>
+
+      <!-- 分类入口 -->
+      <section class="section" id="categories">
+        <div class="section-head"><h2>功能分类索引</h2></div>
+        <div class="cat-grid">
+          <a href="#featured" class="cat-item"><div class="cat-icon">📁</div><div class="cat-name">文件批量处理</div><div class="cat-count">6 个工具</div></a>
+          <a href="#featured" class="cat-item"><div class="cat-icon">📄</div><div class="cat-name">PDF 工具箱</div><div class="cat-count">8 个工具</div></a>
+          <a href="#featured" class="cat-item"><div class="cat-icon">🖼️</div><div class="cat-name">图片批处理</div><div class="cat-count">7 个工具</div></a>
+          <a href="#featured" class="cat-item"><div class="cat-icon">🎬</div><div class="cat-name">屏幕录制</div><div class="cat-count">4 个工具</div></a>
+          <a href="#featured" class="cat-item"><div class="cat-icon">📋</div><div class="cat-name">剪贴板管理</div><div class="cat-count">3 个工具</div></a>
+          <a href="#featured" class="cat-item"><div class="cat-icon">🔄</div><div class="cat-name">格式转换</div><div class="cat-count">5 个工具</div></a>
+          <a href="#featured" class="cat-item"><div class="cat-icon">⚙️</div><div class="cat-name">自动化规则</div><div class="cat-count">4 个工具</div></a>
+          <a href="#featured" class="cat-item"><div class="cat-icon">🔒</div><div class="cat-name">加密与安全</div><div class="cat-count">3 个工具</div></a>
+        </div>
+      </section>
+
+      <!-- 深度解析 -->
+      <section class="section deep-dive" id="deep-dive">
+        <h2>免费版能力深度解析：功能边界与适用场景</h2>
+        <p>91免费版在功能覆盖面上已经涵盖了日常办公与内容处理的主要环节，但免费版与付费版之间存在明确的能力分层。理解这些边界，有助于判断免费版是否足以支撑你的工作流，或者哪些环节需要额外寻找替代方案。</p>
+
+        <h3>文件批量处理：20 个文件的单次上限意味着什么</h3>
+        <p>批量重命名、批量转换格式、批量压缩是免费版使用频率最高的三类操作。免费版将单次处理上限设定为 20 个文件，对于日常整理照片、重命名下载文档、转换少量图片格式来说完全够用。但如果需要一次性处理整个文件夹（例如 100 张以上的活动照片），则需要分 5 次以上执行，或者考虑付费版的无限制批量处理。</p>
+        <p>值得注意的是，免费版的批量处理不限制每日使用次数，也不限制累计处理文件总数，仅限制单次操作的文件数量。这意味着你可以通过分批操作完成大批量任务，只是需要多花一点手动操作的时间。</p>
+        <div class="highlight-box">📌 判断标准：如果你的日常批量任务中，单次超过 20 个文件的场景每周不超过 2 次，免费版的分批处理完全可以接受；如果每天都有大批量任务，付费版节省的时间成本更为划算。</div>
+
+        <h3>PDF 工具箱：合并上限 10 个文件的实际影响</h3>
+        <p>免费版 PDF 工具箱支持合并、拆分、加密、解密、页面提取与旋转，功能完整度较高。合并功能的上限是 10 个文件、单文件不超过 50MB，对于合并会议纪要、课程讲义、合同附件等常规场景来说足够。拆分功能则没有文件数量限制，仅受单文件大小约束。</p>
+        <p>如果你需要合并的 PDF 超过 10 个，可以分两批合并后再将两个结果文件合并一次，这样最多可以处理 19 个文件。这个变通方法在免费版内完全可行，只是操作步骤从一步变成了三步。</p>
+
+        <h3>屏幕录制：10 分钟与水印的双重限制</h3>
+        <p>免费版屏幕录制单次最长 10 分钟，导出视频在右下角带有半透明水印。这两个限制对使用场景的影响差异较大：10 分钟时长对于录制单个操作演示、软件教程片段、会议记录片段基本够用，但录制完整课程或长时间演示则需要分段录制。</p>
+        <p>水印方面，免费版的水印位于画面右下角，尺寸较小且透明度较高，不影响主要内容观看。如果录制的视频需要直接对外发布且对画面纯净度有要求，则需考虑付费版或使用其他工具。</p>
+
+        <h3>自动化规则：3 条规则、2 个动作的配置逻辑</h3>
+        <p>免费版允许同时启用最多 3 条自动化规则，每条规则可设置 2 个连续动作。例如"当监控文件夹出现新文件 → 自动重命名 → 自动压缩图片"，这就是一条包含 2 个动作的规则。如果你需要更复杂的处理链（比如重命名后转换格式再移动到指定文件夹），则需要拆分成多条规则或升级到付费版。</p>
+        <p>对于个人用户来说，3 条规则通常可以覆盖最常见的自动化需求：一条用于图片处理、一条用于文档整理、一条用于下载文件归类。建议优先将高频重复的操作配置为规则，把有限的名额用在最能节省时间的地方。</p>
+
+        <h3>免费版与付费版的核心差异对照</h3>
+        <ul>
+          <li><strong>批量处理上限：</strong>免费版单次 20 个文件，付费版无限制（受系统性能约束）。</li>
+          <li><strong>PDF 合并数量：</strong>免费版单次最多 10 个文件，付费版最多 50 个文件。</li>
+          <li><strong>屏幕录制时长与导出：</strong>免费版 10 分钟带水印，付费版无时长限制且无水印。</li>
+          <li><strong>自动化规则数量：</strong>免费版 3 条规则 / 每条 2 个动作，付费版 20 条规则 / 每条 5 个动作。</li>
+          <li><strong>剪贴板历史容量：</strong>免费版 200 条，付费版 1000 条。</li>
+          <li><strong>图片压缩导出分辨率：</strong>免费版保留原始分辨率，付费版额外支持自定义输出尺寸。</li>
+        </ul>
+      </section>
+
+      <!-- 体验指南 -->
+      <section class="section" id="guide">
+        <div class="section-head"><h2>免费版上手路径与使用建议</h2></div>
+        <div class="guide-grid">
+          <div class="guide-step">
+            <div class="step-num">1</div>
+            <div>
+              <h4>先确认系统兼容性</h4>
+              <p>91免费版支持 Windows 10/11（64 位）与 macOS 12 及以上版本。下载前请确认系统版本，避免安装后无法运行。Linux 版本目前处于内测阶段，暂未开放免费版下载。</p>
+            </div>
+          </div>
+          <div class="guide-step">
+            <div class="step-num">2</div>
+            <div>
+              <h4>从核心功能开始试用</h4>
+              <p>安装后建议先试用"批量重命名"和"图片压缩"两个模块，这两个功能上手门槛低、反馈直观，能在几分钟内判断软件的整体交互是否符合你的习惯。</p>
+            </div>
+          </div>
+          <div class="guide-step">
+            <div class="step-num">3</div>
+            <div>
+              <h4>配置自动化规则前先梳理流程</h4>
+              <p>在设置自动化之前，先用纸笔列出你每天重复最多的 2—3 个文件操作步骤。然后对照免费版的 3 条规则上限，优先把最耗时的操作配置成自动化。</p>
+            </div>
+          </div>
+          <div class="guide-step">
+            <div class="step-num">4</div>
+            <div>
+              <h4>评估是否触碰免费版边界</h4>
+              <p>连续使用一周后，记录每次触发限制（超过 20 个文件、录制超时、规则不够用）的频率。如果每周触发次数少于 3 次，免费版完全够用；如果每天都会碰到，再考虑升级。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="section" id="faq">
+        <div class="section-head"><h2>常见问题</h2></div>
+        <div class="faq-list">
+          <details>
+            <summary>91免费版和付费版在功能上差多少？</summary>
+            <div class="faq-answer">免费版覆盖了全部核心功能模块，差异主要体现在使用上限上：批量处理单次 20 个文件（付费版无限制）、PDF 合并单次 10 个文件（付费版 50 个）、屏幕录制 10 分钟带水印（付费版无限制无水印）、自动化规则 3 条（付费版 20 条）。如果日常处理量不大，免费版完全够用。</div>
+          </details>
+          <details>
+            <summary>免费版有没有使用时间限制或强制付费弹窗？</summary>
+            <div class="faq-answer">免费版没有试用期限制，可以无限期使用。软件内不弹强制付费弹窗，仅在功能触发上限时会显示提示信息并给出升级入口，关闭提示后可继续使用其他功能。</div>
+          </details>
+          <details>
+            <summary>批量重命名的正则替换在免费版里能用吗？</summary>
+            <div class="faq-answer">可以。从 v3.2.1 版本开始，正则表达式替换功能对免费版和付费版同步开放，不设额外限制。使用时需要在重命名设置中切换到"高级模式"才能看到正则输入框。</div>
+          </details>
+          <details>
+            <summary>屏幕录制的水印能不能去掉？</summary>
+            <div class="faq-answer">免费版导出的视频右下角带有半透明水印，目前没有设置项可以关闭。如果对画面纯净度有要求，可以考虑使用系统自带的录屏工具配合其他剪辑软件处理，或者升级到付费版。</div>
+          </details>
+          <details>
+            <summary>免费版支持哪些图片格式的批量压缩？</summary>
+            <div class="faq-answer">支持 JPEG、PNG、WebP、BMP、TIFF 五种格式的批量压缩与互转。其中 WebP 格式的压缩效率最高，建议在网络发布场景优先使用。免费版单次最多处理 15 张图片，压缩质量可在 1—100 之间调节。</div>
+          </details>
+          <details>
+            <summary>安装免费版之后，之前付费版的数据会冲突吗？</summary>
+            <div class="faq-answer">不会。免费版与付费版共用同一套配置文件与历史记录目录，安装时会自动识别已有数据。如果你之前使用过付费版，卸载后安装免费版，剪贴板历史、自动化规则等个人配置会保留。但需要注意，免费版会自动停用超出免费限额的自动化规则（仅保留前 3 条）。</div>
+          </details>
+        </div>
+      </section>
+
+      <!-- 用户评论 -->
+      <section class="section" id="comments">
+        <div class="section-head"><h2>用户反馈</h2><span style="font-size:13px;color:var(--muted);">共 16 条</span></div>
+        <div class="comment-list">
+          <div class="comment-item"><div class="comment-avatar">🦊</div><div class="comment-body"><div class="comment-header"><span class="comment-name">南山客</span><span class="comment-date">11月8日 10:12</span></div><div class="comment-text">批量重命名加正则替换真的救了我，整理几千张图片终于不用一个个改了。免费版20个一批虽然要分多次，但比手动快太多了。</div></div></div>
+          <div class="comment-item"><div class="comment-avatar">🐼</div><div class="comment-body"><div class="comment-header"><span class="comment-name">熊猫不熬夜</span><span class="comment-date">11月7日 22:45</span></div><div class="comment-text">PDF合并10个文件的上限有点紧，我合并课程资料经常超过10个，只能分两批操作。希望免费版能稍微放宽一点。</div></div></div>
+          <div class="comment-item"><div class="comment-avatar">🐧</div><div class="comment-body"><div class="comment-header"><span class="comment-name">企鹅搬砖中</span><span class="comment-date">11月7日 15:30</span></div><div class="comment-text">屏幕录制10分钟对我来说刚好够用，录个操作演示片段绰绰有余。水印在右下角不太影响观看，整体挺满意的。</div></div></div>
+          <div class="comment-item"><div class="comment-avatar">🐨</div><div class="comment-body"><div class="comment-header"><span class="comment-name">考拉睡不醒</span><span class="comment-date">11月6日 19:08</span></div><div class="comment-text">剪贴板历史200条比之前150条好多了，日常复制粘贴完全够用。固定收藏的功能也很实用，常用的地址和代码片段直接置顶。</div></div></div>
+          <div class="comment-item"><div class="comment-avatar">🐸</div><div class="comment-body"><div class="comment-header"><span class="comment-name">青蛙跳跳</span><span class="comment-date">11月6日 11:20</span></div><div class="comment-text">自动化规则3条有点少，我设了图片压缩、文档重命名、下载文件归类就满了。希望能多给一两条，或者让付费版便宜点。</div></div></div>
+          <div class="comment-item"><div class="comment-avatar">🦉</div><div class="comment-body"><div class="comment-header"><span class="comment-name">夜猫子阿七</span><span class="comment-date">11月5日 23:55</span></div><div class="comment-text">暗色模式终于来了，晚上用不刺眼了。更新之后界面整体协调了不少，细节做得可以。</div></div></div>
+          <div class="comment-item"><div class="comment-avatar">🐯</div><div class="comment-body"><div class="comment-header"><span class="comment-name">虎纠小陈</span><span class="comment-date">11月5日 14:10</span></div><div class="comment-text">图片压缩质量不错，WebP格式压完体积小很多，画质肉眼几乎看不出差别。一次15张也够用了，我一般也就传十几张图。</div></div></div>
+          <div class="comment-item"><div class="comment-avatar">🐮</div><div class="comment-body"><div class="comment-header"><span class="comment-name">牛牛不加班</span><span class="comment-date">11月4日 09:45</span></div><div class="comment-text">格式转换支持的类型挺全的，我经常把HEIC转JPG，速度快而且没出过错。免费版10个文件一批，处理手机照片正好。</div></div></div>
+          <div class="comment-item"><div class="comment-avatar">🐰</div><div class="comment-body"><div class="comment-header"><span class="comment-name">兔子不吃草</span><span class="comment-date">11月3日 20:30</span></div><div class="comment-text">加水印功能挺方便的，批量给活动照片加logo，位置和透明度都能调。免费版一次10张够用了，多了就分几次。</div></div></div>
+          <div class="comment-item"><div class="comment-avatar">🐲</div><div class="comment-body"><div class="comment-header"><span class="comment-name">龙岗搬砖人</span><span class="comment-date">11月3日 12:15</span></div><div class="comment-text">整体用下来免费版功能很良心了，没有那种用着用着突然弹窗要你付费的恶心设定。就是PDF合并上限能再高点就更好了。</div></div></div>
+          <div class="comment-item"><div class="comment-avatar">🦄</div><div class="comment-body"><div class="comment-header"><span class="comment-name">独角兽先生</span><span class="comment-date">11月2日 17:40</span></div><div class="comment-text">滚动截图功能很实用，截长网页不用再拼图了。标注工具也顺手，箭头方框文字都有，写教程的时候直接截完就能用。</div></div></div>
+          <div class="comment-item"><div class="comment-avatar">🐶</div><div class="comment-body"><div class="comment-header"><span class="comment-name">柴犬小队长</span><span class="comment-date">11月2日 08:20</span></div><div class="comment-text">macOS版本运行稳定，没有崩溃过。和Windows版的界面基本一致，切换平台不用重新适应。</div></div></div>
+          <div class="comment-item"><div class="comment-avatar">🐱</div><div class="comment-body"><div class="comment-header"><span class="comment-name">喵喵不吃鱼</span><span class="comment-date">11月1日 21:00</span></div><div class="comment-text">说个不足：按一级书签拆分PDF的功能在我的一份文档里没生效，可能是书签格式不标准。普通拆分没问题，就这个特定文件不行。</div></div></div>
+          <div class="comment-item"><div class="comment-avatar">🦁</div><div class="comment-body"><div class="comment-header"><span class="comment-name">狮子山下</span><span class="comment-date">10月31日 16:35</span></div><div class="comment-text">免费版能做到这个程度确实可以了。我主要用批量重命名和格式转换，每天处理几十个文件，分两批就搞定了，不耽误事。</div></div></div>
+          <div class="comment-item"><div class="comment-avatar">🐻</div><div class="comment-body"><div class="comment-header"><span class="comment-name">熊出没注意</span><span class="comment-date">10月30日 10:50</span></div><div class="comment-text">更新频率挺高的，每次更新都有实际改进而不是只改版本号。v3.2.1的文件名预设规则很好用，省得每次手动输入规则了。</div></div></div>
+          <div class="comment-item"><div class="comment-avatar">🦅</div><div class="comment-body"><div class="comment-header"><span class="comment-name">鹰击长空</span><span class="comment-date">10月29日 19:25</span></div><div class="comment-text">自动化规则的文件大小触发条件很实用，我设了"大于5MB的图片自动压缩"，省了不少手动操作。希望以后能增加更多触发条件类型。</div></div></div>
+        </div>
+      </section>
+
+      <!-- 相关资讯 -->
+      <section class="section" id="news">
+        <div class="section-head"><h2>相关资讯</h2></div>
+        <div class="news-list">
+          <div class="news-item">
+            <span class="news-date">2026-11-08</span>
+            <div><h4><a href="#news">免费版 v3.2.1 发布：批量导出支持文件名规则预设</a></h4><p>新版本在批量导出环节增加了多组文件名规则预设，用户可将常用的命名模板保存为预设，下次直接调用。同时修复了暗色模式下部分按钮对比度不足的问题。</p></div>
+          </div>
+          <div class="news-item">
+            <span class="news-date">2026-11-06</span>
+            <div><h4><a href="#news">屏幕录制新增"跟随鼠标"模式，演示视频制作更省力</a></h4><p>该模式下录制区域会自动跟随鼠标位置移动，适合录制软件操作教程或游戏解说片段。免费版用户同样可以使用该功能，单次录制时长仍保持 10 分钟上限。</p></div>
+          </div>
+          <div class="news-item">
+            <span class="news-date">2026-11-04</span>
+            <div><h4><a href="#news">PDF 拆分功能升级：可按一级书签自动拆分文档</a></h4><p>对于带有规范书签结构的电子书、技术手册和合同文件，新功能可以按一级书签将文档拆分为多个独立 PDF，免去手动输入页码的步骤。</p></div>
+          </div>
+          <div class="news-item">
+            <span class="news-date">2026-11-02</span>
+            <div><h4><a href="#news">图片压缩算法更新，WebP 导出速度提升约 20%</a></h4><p>算法升级至 v2.4 版本后，在保持相近画质的前提下平均压缩率提升约 12%，其中 WebP 格式的导出速度提升最为明显，批量处理场景的等待时间进一步缩短。</p></div>
+          </div>
+          <div class="news-item">
+            <span class="news-date">2026-10-30</span>
+            <div><h4><a href="#news">暗色模式正式上线，支持跟随系统主题自动切换</a></h4><p>用户可在设置中选择浅色、深色或跟随系统三种模式。界面配色针对暗色环境重新调整了对比度，长时间使用对眼睛更友好。</p></div>
+          </div>
+          <div class="news-item">
+            <span class="news-date">2026-10-28</span>
+            <div><h4><a href="#news">格式转换修复中文路径乱码问题</a></h4><p>此前部分 Windows 用户在转换含中文字符路径下的文件时，输出文件名会出现乱码。该问题已在 v3.2.0 版本中修复，建议用户更新至最新版本。</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 相关推荐 -->
+      <section class="section" id="related">
+        <div class="section-head"><h2>相关推荐</h2></div>
+        <div class="related-tags">
+          <a href="#featured">批量重命名正则表达式写法</a>
+          <a href="#featured">PDF 按书签拆分操作步骤</a>
+          <a href="#guide">屏幕录制分段技巧</a>
+          <a href="#deep-dive">免费版自动化规则配置思路</a>
+          <a href="#faq">剪贴板历史固定收藏怎么用</a>
+          <a href="#featured">WebP 与 JPEG 压缩效果对比</a>
+          <a href="#deep-dive">批量处理分批操作的正确顺序</a>
+          <a href="#faq">免费版升级付费版的数据迁移</a>
+        </div>
+      </section>
+
+      <!-- 补充板块：热门排行 -->
+      <section class="section" id="ranking">
+        <div class="section-head"><h2>免费版功能使用热度排行</h2><span style="font-size:13px;color:var(--muted);">统计周期 2026-10-09 至 2026-11-08</span></div>
+        <ol class="rank-list">
+          <li><span class="rank-name">批量重命名工具</span><span class="rank-score">周使用 3.2 万次</span></li>
+          <li><span class="rank-name">图片批量压缩</span><span class="rank-score">周使用 2.8 万次</span></li>
+          <li><span class="rank-name">PDF 合并与拆分</span><span class="rank-score">周使用 2.4 万次</span></li>
+          <li><span class="rank-name">剪贴板历史管理</span><span class="rank-score">周使用 2.1 万次</span></li>
+          <li><span class="rank-name">格式转换工具</span><span class="rank-score">周使用 1.9 万次</span></li>
+          <li><span class="rank-name">屏幕录制与截图</span><span class="rank-score">周使用 1.5 万次</span></li>
+          <li><span class="rank-name">图片批量加水印</span><span class="rank-score">周使用 1.2 万次</span></li>
+          <li><span class="rank-name">自动化规则设置</span><span class="rank-score">周使用 0.9 万次</span></li>
+        </ol>
+      </section>
+
+    </main>
+
+    <!-- 右辅助栏 -->
+    <aside class="right-sidebar" aria-label="辅助信息">
+      <div class="sidebar-card">
+        <h3>最新更新</h3>
+        <ul class="update-list">
+          <li><span class="update-badge">今天</span><a href="#latest-updates">v3.2.1 发布：批量导出预设</a></li>
+          <li><span class="update-badge">昨天</span><a href="#latest-updates">PDF 按书签拆分上线</a></li>
+          <li><span class="update-badge">11-06</span><a href="#latest-updates">屏幕录制新增跟随鼠标</a></li>
+          <li><span class="update-badge">11-05</span><a href="#latest-updates">批量重命名支持正则</a></li>
+          <li><span class="update-badge">11-03</span><a href="#latest-updates">图片压缩算法升级 v2.4</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-card">
+        <h3>热门标签</h3>
+        <div class="hot-tags">
+          <a href="#featured">批量重命名</a>
+          <a href="#featured">PDF合并</a>
+          <a href="#featured">图片压缩</a>
+          <a href="#featured">屏幕录制</a>
+          <a href="#featured">剪贴板历史</a>
+          <a href="#featured">格式转换</a>
+          <a href="#featured">加水印</a>
+          <a href="#featured">自动化规则</a>
+          <a href="#faq">免费版限制</a>
+          <a href="#deep-dive">付费版对比</a>
+        </div>
+      </div>
+      <div class="sidebar-card">
+        <h3>快捷入口</h3>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <a href="#guide" class="btn btn-outline" style="justify-content:flex-start;font-size:13px;">📖 安装配置指南</a>
+          <a href="#faq" class="btn btn-outline" style="justify-content:flex-start;font-size:13px;">❓ 常见问题解答</a>
+          <a href="#latest-updates" class="btn btn-outline" style="justify-content:flex-start;font-size:13px;">📋 完整更新日志</a>
+          <a href="#ranking" class="btn btn-outline" style="justify-content:flex-start;font-size:13px;">📊 功能热度排行</a>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+</div>
+
+<!-- 页尾 -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="brand-text">91免费版官网入口</div>
+        <p>免费版功能清单、版本更新记录、安装配置说明与用户实操反馈的聚合页面，帮助用户评估免费版是否满足自身需求。</p>
+      </div>
+      <div class="footer-col">
+        <h4>功能模块</h4>
+        <a href="#featured">批量重命名</a>
+        <a href="#featured">PDF 工具箱</a>
+        <a href="#featured">图片批处理</a>
+        <a href="#featured">屏幕录制</a>
+        <a href="#featured">格式转换</a>
+      </div>
+      <div class="footer-col">
+        <h4>使用帮助</h4>
+        <a href="#guide">安装配置指南</a>
+        <a href="#faq">常见问题</a>
+        <a href="#deep-dive">免费版深度解析</a>
+        <a href="#latest-updates">版本更新日志</a>
+      </div>
+      <div class="footer-col">
+        <h4>社区与反馈</h4>
+        <a href="#comments">用户评论</a>
+        <a href="#news">相关资讯</a>
+        <a href="#ranking">功能热度排行</a>
+        <a href="#related">延伸阅读</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 91免费版官网入口 · 内容仅供参考</span>
+      <span>部分内容为示例数据，仅用于展示页面结构</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // 轻量交互：平滑滚动由 CSS 处理，此处补充移动端菜单可扩展性及焦点管理
+  (function() {
+    // 处理锚点跳转后的焦点管理，提升可访问性
+    document.querySelectorAll('a[href^="#"]').forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        var targetId = this.getAttribute('href').slice(1);
+        if (!targetId) return;
+        var target = document.getElementById(targetId);
+        if (target) {
+          // 不阻止默认滚动，仅补充焦点
+          target.setAttribute('tabindex', '-1');
+          setTimeout(function() { target.focus({ preventScroll: true }); }, 300);
+        }
+      });
+    });
+  })();
+</script>
+
+</body>
+  </html>
