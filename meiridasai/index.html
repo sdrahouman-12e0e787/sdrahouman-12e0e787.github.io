@@ -1,0 +1,1750 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>每日大赛mrdsfun - 赛事聚合与深度解析</title>
+  <meta name="description" content="每日大赛mrdsfun 汇聚信息学、数学、物理等竞赛的每日赛程与深度解析，包含今日赛题、排行榜、体验指南与用户讨论。适合竞赛选手与教练追踪每日赛事动态。">
+  <meta name="keywords" content="信息学竞赛,数学竞赛,物理竞赛,每日赛题,赛事排行榜">
+  <style>
+    /* ---------- 全局色彩与基础系统 ---------- */
+    :root {
+      --bg: #f7f9fc;
+      --surface: #ffffff;
+      --surface-soft: #f0f4fa;
+      --border: #dde3ed;
+      --text-primary: #1a2634;
+      --text-secondary: #4f5f73;
+      --text-tertiary: #7e8b9c;
+      --brand: #1f5f9e;
+      --brand-light: #e2edfc;
+      --brand-dark: #0f3f6e;
+      --accent: #d94f2b;
+      --accent-light: #fce9e3;
+      --success: #1b7e5f;
+      --success-light: #e0f2ec;
+      --warning: #b86b1a;
+      --warning-light: #fef3e0;
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 20px;
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
+      --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.06);
+      --header-height: 64px;
+      --notice-height: 40px;
+      --font-sans: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      --max-width: 1360px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-padding-top: calc(var(--notice-height) + var(--header-height) + 12px);
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg);
+      color: var(--text-primary);
+      line-height: 1.65;
+      font-size: 15px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    ul, ol {
+      list-style: none;
+    }
+
+    /* ---------- 吸顶公告条 ---------- */
+    .notice-bar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--notice-height);
+      background: var(--brand-dark);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13.5px;
+      letter-spacing: 0.2px;
+      padding: 0 16px;
+      text-align: center;
+    }
+
+    .notice-bar strong {
+      font-weight: 600;
+      margin-right: 6px;
+      color: #ffd966;
+    }
+
+    /* ---------- 吸顶页头 ---------- */
+    .site-header {
+      position: sticky;
+      top: var(--notice-height);
+      z-index: 99;
+      height: var(--header-height);
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .header-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      padding: 0 24px;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .logo-svg {
+      width: 34px;
+      height: 34px;
+      display: block;
+    }
+
+    .brand-text {
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--brand-dark);
+      letter-spacing: -0.3px;
+      white-space: nowrap;
+    }
+
+    .main-nav {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      flex: 1;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .main-nav::-webkit-scrollbar {
+      display: none;
+    }
+
+    .main-nav a {
+      font-size: 14px;
+      padding: 6px 12px;
+      border-radius: 20px;
+      color: var(--text-secondary);
+      font-weight: 500;
+      white-space: nowrap;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .main-nav a:hover {
+      background: var(--brand-light);
+      color: var(--brand);
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .btn-outline {
+      border: 1.5px solid var(--brand);
+      color: var(--brand);
+      background: transparent;
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-size: 13.5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .btn-outline:hover {
+      background: var(--brand);
+      color: #fff;
+    }
+
+    .btn-solid {
+      background: var(--brand);
+      color: #fff;
+      border: 1.5px solid var(--brand);
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-size: 13.5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .btn-solid:hover {
+      background: var(--brand-dark);
+    }
+
+    /* ---------- 主容器 ---------- */
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ---------- 首屏 Hero ---------- */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 40px;
+      align-items: center;
+      padding: 48px 0 40px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 40px;
+    }
+
+    .hero-content h1 {
+      font-size: 38px;
+      font-weight: 800;
+      color: var(--brand-dark);
+      line-height: 1.2;
+      letter-spacing: -0.5px;
+      margin-bottom: 16px;
+    }
+
+    .hero-desc {
+      font-size: 16px;
+      color: var(--text-secondary);
+      max-width: 560px;
+      margin-bottom: 24px;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .hero-actions .btn-solid,
+    .hero-actions .btn-outline {
+      padding: 9px 22px;
+      font-size: 14.5px;
+      border-radius: 28px;
+    }
+
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-visual svg {
+      width: 100%;
+      max-width: 380px;
+      height: auto;
+    }
+
+    /* ---------- 三栏布局 ---------- */
+    .layout-3col {
+      display: grid;
+      grid-template-columns: 180px 1fr 260px;
+      gap: 32px;
+      align-items: start;
+      margin-bottom: 60px;
+    }
+
+    .left-index {
+      position: sticky;
+      top: calc(var(--notice-height) + var(--header-height) + 20px);
+      align-self: start;
+    }
+
+    .left-index .index-title {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-tertiary);
+      margin-bottom: 12px;
+      padding-left: 4px;
+    }
+
+    .left-index ul li a {
+      display: block;
+      padding: 8px 12px;
+      font-size: 14px;
+      color: var(--text-secondary);
+      border-radius: var(--radius-sm);
+      border-left: 3px solid transparent;
+      transition: all 0.15s;
+      margin-bottom: 2px;
+    }
+
+    .left-index ul li a:hover,
+    .left-index ul li a.active {
+      background: var(--brand-light);
+      color: var(--brand);
+      border-left-color: var(--brand);
+      font-weight: 600;
+    }
+
+    .right-aside {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      position: sticky;
+      top: calc(var(--notice-height) + var(--header-height) + 20px);
+    }
+
+    /* 侧栏卡片通用 */
+    .aside-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .aside-card h3 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--brand-dark);
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .rank-list li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: 13.5px;
+    }
+
+    .rank-list li:last-child {
+      border-bottom: none;
+    }
+
+    .rank-num {
+      width: 22px;
+      height: 22px;
+      background: var(--surface-soft);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-tertiary);
+      flex-shrink: 0;
+    }
+
+    .rank-num.top3 {
+      background: var(--brand);
+      color: #fff;
+    }
+
+    .rank-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .rank-name {
+      font-weight: 600;
+      color: var(--text-primary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .rank-meta {
+      font-size: 11.5px;
+      color: var(--text-tertiary);
+    }
+
+    .update-stream li {
+      padding: 9px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--text-secondary);
+      display: flex;
+      gap: 8px;
+    }
+
+    .update-stream li:last-child {
+      border-bottom: none;
+    }
+
+    .update-time {
+      color: var(--text-tertiary);
+      font-size: 12px;
+      flex-shrink: 0;
+      width: 48px;
+    }
+
+    /* ---------- 主内容通用 ---------- */
+    .section {
+      margin-bottom: 48px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .section-title {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--brand-dark);
+      letter-spacing: -0.3px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-title::before {
+      content: '';
+      width: 4px;
+      height: 22px;
+      background: var(--accent);
+      border-radius: 2px;
+      display: inline-block;
+    }
+
+    .section-more {
+      font-size: 13.5px;
+      color: var(--brand);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .section-more:hover {
+      text-decoration: underline;
+    }
+
+    /* 概览段落 */
+    .overview-text {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 24px 28px;
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.85;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .overview-text p + p {
+      margin-top: 12px;
+    }
+
+    /* 卡片网格 */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .content-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      transition: transform 0.15s, box-shadow 0.15s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .content-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .card-img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      background: var(--surface-soft);
+    }
+
+    .card-body {
+      padding: 16px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      background: var(--brand-light);
+      color: var(--brand);
+      padding: 2px 9px;
+      border-radius: 12px;
+      margin-bottom: 8px;
+      align-self: flex-start;
+    }
+
+    .card-title {
+      font-size: 15.5px;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.4;
+      margin-bottom: 8px;
+    }
+
+    .card-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      flex: 1;
+      margin-bottom: 12px;
+    }
+
+    .card-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--text-tertiary);
+      border-top: 1px solid var(--border);
+      padding-top: 10px;
+    }
+
+    .card-meta .hot {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* 紧凑列表 */
+    .compact-list {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+
+    .compact-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--border);
+      font-size: 14px;
+      transition: background 0.12s;
+    }
+
+    .compact-list li:last-child {
+      border-bottom: none;
+    }
+
+    .compact-list li:hover {
+      background: var(--surface-soft);
+    }
+
+    .list-time {
+      font-size: 12px;
+      color: var(--text-tertiary);
+      flex-shrink: 0;
+      width: 64px;
+      padding-top: 2px;
+    }
+
+    .list-content {
+      flex: 1;
+    }
+
+    .list-title {
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 2px;
+    }
+
+    .list-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    /* 分类入口 */
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .category-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 18px 16px;
+      text-align: center;
+      font-weight: 600;
+      font-size: 14.5px;
+      color: var(--text-primary);
+      transition: border-color 0.15s, background 0.15s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .category-item:hover {
+      border-color: var(--brand);
+      background: var(--brand-light);
+      color: var(--brand);
+    }
+
+    .category-item span {
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--text-tertiary);
+    }
+
+    /* 深度解析 */
+    .deep-analysis {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 32px 36px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .deep-analysis h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--brand-dark);
+      margin-top: 24px;
+      margin-bottom: 10px;
+    }
+
+    .deep-analysis h3:first-child {
+      margin-top: 0;
+    }
+
+    .deep-analysis p {
+      font-size: 14.5px;
+      color: var(--text-secondary);
+      line-height: 1.85;
+      margin-bottom: 12px;
+    }
+
+    .deep-analysis ul {
+      list-style: disc;
+      padding-left: 22px;
+      margin-bottom: 16px;
+      color: var(--text-secondary);
+      font-size: 14.5px;
+      line-height: 1.8;
+    }
+
+    .deep-analysis ul li {
+      margin-bottom: 6px;
+    }
+
+    /* 体验指南步骤 */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      counter-reset: step;
+    }
+
+    .step-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 22px 20px 18px;
+      position: relative;
+      counter-increment: step;
+    }
+
+    .step-item::before {
+      content: counter(step);
+      position: absolute;
+      top: -12px;
+      left: 20px;
+      width: 28px;
+      height: 28px;
+      background: var(--brand);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .step-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+      margin-top: 6px;
+    }
+
+    .step-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* FAQ */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .faq-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+
+    .faq-item summary {
+      padding: 16px 20px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-primary);
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.12s;
+    }
+
+    .faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-item summary:hover {
+      background: var(--surface-soft);
+    }
+
+    .faq-item summary::after {
+      content: '+';
+      font-size: 20px;
+      color: var(--brand);
+      font-weight: 300;
+      transition: transform 0.2s;
+    }
+
+    .faq-item[open] summary::after {
+      content: '−';
+    }
+
+    .faq-answer {
+      padding: 0 20px 18px;
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      border-top: 1px solid var(--border);
+      padding-top: 14px;
+      margin: 0 20px 16px;
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    /* 评论 */
+    .comment-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 14px;
+    }
+
+    .comment-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 16px 18px;
+      font-size: 13.5px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .comment-user {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .comment-avatar {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--brand-light);
+      color: var(--brand);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .comment-name {
+      font-weight: 600;
+      color: var(--text-primary);
+      font-size: 13px;
+    }
+
+    /* 资讯列表 */
+    .news-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+
+    .news-item {
+      display: flex;
+      gap: 16px;
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.12s;
+    }
+
+    .news-item:last-child {
+      border-bottom: none;
+    }
+
+    .news-item:hover {
+      background: var(--surface-soft);
+    }
+
+    .news-date {
+      flex-shrink: 0;
+      font-size: 12.5px;
+      color: var(--text-tertiary);
+      width: 80px;
+      padding-top: 2px;
+    }
+
+    .news-body {
+      flex: 1;
+    }
+
+    .news-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    .news-summary {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    /* 相关推荐标签 */
+    .tag-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tag-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 7px 18px;
+      font-size: 13.5px;
+      color: var(--text-secondary);
+      font-weight: 500;
+      transition: all 0.15s;
+    }
+
+    .tag-item:hover {
+      border-color: var(--brand);
+      color: var(--brand);
+      background: var(--brand-light);
+    }
+
+    /* 榜单表格样式 */
+    .rank-table {
+      width: 100%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    .rank-table th {
+      background: var(--surface-soft);
+      text-align: left;
+      padding: 12px 16px;
+      font-weight: 600;
+      color: var(--text-tertiary);
+      font-size: 12.5px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .rank-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-secondary);
+    }
+
+    .rank-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .rank-table .name {
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .rank-table .score {
+      font-weight: 700;
+      color: var(--brand);
+    }
+
+    /* 页脚 */
+    .site-footer {
+      background: var(--brand-dark);
+      color: #cdd9e8;
+      padding: 48px 0 32px;
+      margin-top: 20px;
+    }
+
+    .footer-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 36px;
+      margin-bottom: 36px;
+    }
+
+    .footer-brand .brand-text {
+      color: #fff;
+      font-size: 20px;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .footer-brand p {
+      font-size: 13px;
+      line-height: 1.7;
+      color: #9db0c8;
+      max-width: 280px;
+    }
+
+    .footer-col h4 {
+      color: #fff;
+      font-size: 14px;
+      margin-bottom: 14px;
+      font-weight: 600;
+    }
+
+    .footer-col ul li a {
+      font-size: 13px;
+      color: #9db0c8;
+      line-height: 2.1;
+      transition: color 0.15s;
+    }
+
+    .footer-col ul li a:hover {
+      color: #fff;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 22px;
+      font-size: 12px;
+      color: #7e90a8;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    /* 无结果提示 */
+    .no-result {
+      padding: 24px;
+      text-align: center;
+      color: var(--text-tertiary);
+      font-size: 14px;
+      background: var(--surface);
+      border: 1px dashed var(--border);
+      border-radius: var(--radius-md);
+    }
+
+    /* 搜索框 */
+    .search-box {
+      display: flex;
+      gap: 0;
+      margin-bottom: 16px;
+    }
+
+    .search-box input {
+      flex: 1;
+      padding: 9px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+      font-size: 14px;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+
+    .search-box input:focus {
+      border-color: var(--brand);
+    }
+
+    .search-box button {
+      padding: 9px 18px;
+      background: var(--brand);
+      color: #fff;
+      border: none;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .search-box button:hover {
+      background: var(--brand-dark);
+    }
+
+    /* 响应式 */
+    @media (max-width: 1024px) {
+      .layout-3col {
+        grid-template-columns: 1fr 260px;
+      }
+
+      .left-index {
+        display: none;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .hero-visual {
+        order: -1;
+      }
+
+      .hero-visual svg {
+        max-width: 280px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 740px) {
+      :root {
+        --header-height: 56px;
+        --notice-height: 36px;
+      }
+
+      .header-inner {
+        padding: 0 16px;
+        gap: 12px;
+      }
+
+      .brand-text {
+        font-size: 16px;
+      }
+
+      .main-nav {
+        display: none;
+      }
+
+      .header-actions .btn-outline {
+        display: none;
+      }
+
+      .container {
+        padding: 0 16px;
+      }
+
+      .hero {
+        padding: 28px 0 24px;
+      }
+
+      .hero-content h1 {
+        font-size: 28px;
+      }
+
+      .hero-desc {
+        font-size: 14px;
+      }
+
+      .layout-3col {
+        grid-template-columns: 1fr;
+      }
+
+      .right-aside {
+        position: static;
+      }
+
+      .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .deep-analysis {
+        padding: 22px 18px;
+      }
+
+      .comment-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .news-item {
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .news-date {
+        width: auto;
+      }
+
+      .section-title {
+        font-size: 18px;
+      }
+
+      .overview-text {
+        padding: 18px 16px;
+      }
+    }
+  </style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+  <!-- 吸顶公告条 -->
+  <div class="notice-bar">
+    <strong>今日更新</strong> 11 月 8 日新增 6 场赛事、3 篇深度解析，信息学联赛第 3 题已开放评测
+  </div>
+
+  <!-- 吸顶页头 -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="logo-area">
+        <svg class="logo-svg" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="2" width="36" height="36" rx="10" fill="#1f5f9e"/>
+          <path d="M12 26L18 14L24 26" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M15 20H21" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="30" cy="14" r="4" fill="#ffd966"/>
+        </svg>
+        <span class="brand-text">每日大赛mrdsfun</span>
+      </div>
+      <nav class="main-nav">
+        <a href="/#overview">赛事概览</a>
+        <a href="/#featured">精选赛题</a>
+        <a href="/#updates">今日赛程</a>
+        <a href="/#categories">分类入口</a>
+        <a href="/#analysis">深度解析</a>
+        <a href="/#guide">体验指南</a>
+        <a href="/#faq">常见问题</a>
+        <a href="/#comments">用户讨论</a>
+        <a href="/#news">赛事资讯</a>
+        <a href="/#ranking">排行榜</a>
+      </nav>
+      <div class="header-actions">
+        <button class="btn-outline" onclick="document.getElementById('search-input').focus()">搜索</button>
+        <button class="btn-solid">订阅</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 主容器 -->
+  <div class="container">
+
+    <!-- 首屏 -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>每日大赛mrdsfun</h1>
+        <p class="hero-desc">
+          汇聚信息学、数学、物理等学科的每日竞赛信息，提供今日赛题、实时排行榜、深度题解与选手讨论。追踪每日大赛mrdsfun，不错过每一场关键对决。
+        </p>
+        <div class="hero-actions">
+          <a href="/#updates" class="btn-solid">查看今日赛程</a>
+          <a href="/#ranking" class="btn-outline">最新排行榜</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <svg viewBox="0 0 380 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="20" y="20" width="340" height="260" rx="20" fill="#e2edfc"/>
+          <rect x="50" y="50" width="130" height="80" rx="10" fill="#1f5f9e"/>
+          <text x="65" y="82" fill="#fff" font-size="20" font-weight="bold" font-family="PingFang SC, sans-serif">赛题 3</text>
+          <text x="65" y="108" fill="#a0c4f0" font-size="12" font-family="PingFang SC, sans-serif">信息学联赛</text>
+          <rect x="200" y="50" width="130" height="80" rx="10" fill="#fff" stroke="#dde3ed" stroke-width="1.5"/>
+          <text x="215" y="82" fill="#1a2634" font-size="20" font-weight="bold" font-family="PingFang SC, sans-serif">数学 5</text>
+          <text x="215" y="108" fill="#7e8b9c" font-size="12" font-family="PingFang SC, sans-serif">代数几何综合</text>
+          <rect x="50" y="150" width="280" height="50" rx="10" fill="#fff" stroke="#dde3ed" stroke-width="1.5"/>
+          <circle cx="80" cy="175" r="12" fill="#1b7e5f"/>
+          <text x="74" y="180" fill="#fff" font-size="12" font-weight="bold" font-family="PingFang SC, sans-serif">1</text>
+          <text x="105" y="172" fill="#1a2634" font-size="14" font-weight="600" font-family="PingFang SC, sans-serif">张明远</text>
+          <text x="105" y="190" fill="#7e8b9c" font-size="11" font-family="PingFang SC, sans-serif">信息学 · 280 分</text>
+          <text x="280" y="183" fill="#1f5f9e" font-size="18" font-weight="bold" font-family="PingFang SC, sans-serif">280</text>
+          <rect x="50" y="215" width="280" height="40" rx="10" fill="#fef3e0"/>
+          <text x="70" y="240" fill="#b86b1a" font-size="13" font-weight="600" font-family="PingFang SC, sans-serif">⏱ 下一场：物理竞赛 14:00 开始</text>
+        </svg>
+      </div>
+    </section>
+
+    <!-- 三栏布局 -->
+    <div class="layout-3col">
+
+      <!-- 左侧频道索引 -->
+      <aside class="left-index">
+        <div class="index-title">频道索引</div>
+        <ul>
+          <li><a href="/#overview" class="active">赛事概览</a></li>
+          <li><a href="/#featured">精选赛题</a></li>
+          <li><a href="/#updates">今日赛程</a></li>
+          <li><a href="/#categories">分类入口</a></li>
+          <li><a href="/#analysis">深度解析</a></li>
+          <li><a href="/#guide">体验指南</a></li>
+          <li><a href="/#faq">常见问题</a></li>
+          <li><a href="/#comments">用户讨论</a></li>
+          <li><a href="/#news">赛事资讯</a></li>
+          <li><a href="/#ranking">排行榜</a></li>
+          <li><a href="/#related">相关推荐</a></li>
+        </ul>
+      </aside>
+
+      <!-- 主内容 -->
+      <main>
+
+        <!-- 1. 主题领域概览 -->
+        <section class="section" id="overview">
+          <div class="section-header">
+            <h2 class="section-title">赛事概览</h2>
+          </div>
+          <div class="overview-text">
+            <p>
+              每日大赛mrdsfun 覆盖信息学、数学、物理、化学四大学科竞赛，每天聚合来自全国各大平台的赛事信息。信息学方向以算法与数据结构为核心，包含动态规划、图论、字符串处理等高频考点；数学竞赛侧重代数、几何与组合数学的交叉题型；物理竞赛聚焦力学建模与电磁学综合应用；化学竞赛则围绕有机推断与实验分析展开。
+            </p>
+            <p>
+              当前赛程处于 2026 年秋季赛季中段，信息学联赛已进行至第 8 轮，数学奥林匹克邀请赛进入复赛阶段。每日大赛mrdsfun 同步更新各大平台的评测结果、选手排名与题解分析，帮助参赛者快速定位薄弱环节。此外，平台还收录了近期热门赛题的通过率、平均分与讨论热度，方便选手评估题目难度与自身水平。
+            </p>
+          </div>
+        </section>
+
+        <!-- 2. 精选内容推荐 -->
+        <section class="section" id="featured">
+          <div class="section-header">
+            <h2 class="section-title">精选赛题与专题</h2>
+            <a href="/#featured" class="section-more">查看全部 →</a>
+          </div>
+          <div class="card-grid">
+            <div class="content-card">
+              <img class="card-img" src="https://picsum.photos/seed/mrdsfun-algo08/400/300" alt="信息学联赛第8轮图论题封面" width="400" height="300" loading="lazy">
+              <div class="card-body">
+                <span class="card-tag">信息学</span>
+                <h3 class="card-title">信息学联赛第 8 轮 · 图论最短路径</h3>
+                <p class="card-desc">给定带权有向图，求从源点到所有节点的最短路径。考察 Dijkstra 与 Bellman-Ford 的适用场景差异，时间复杂度分析是关键得分点。</p>
+                <div class="card-meta"><span>通过率 34%</span><span class="hot">热度 9.2</span></div>
+              </div>
+            </div>
+            <div class="content-card">
+              <img class="card-img" src="https://picsum.photos/seed/mrdsfun-math05/400/300" alt="数学奥林匹克邀请赛组合题封面" width="400" height="300" loading="lazy">
+              <div class="card-body">
+                <span class="card-tag">数学</span>
+                <h3 class="card-title">数学奥林匹克邀请赛 · 组合计数第 5 题</h3>
+                <p class="card-desc">圆周上 n 个点的三角形剖分计数问题，需要运用卡特兰数递推关系。题目给出 n ≤ 1000 的数据范围，对取模运算有明确要求。</p>
+                <div class="card-meta"><span>通过率 21%</span><span class="hot">热度 8.7</span></div>
+              </div>
+            </div>
+            <div class="content-card">
+              <img class="card-img" src="https://picsum.photos/seed/mrdsfun-phy03/400/300" alt="物理竞赛力学建模题封面" width="400" height="300" loading="lazy">
+              <div class="card-body">
+                <span class="card-tag">物理</span>
+                <h3 class="card-title">物理竞赛 · 刚体转动惯量综合分析</h3>
+                <p class="card-desc">包含圆盘、细杆与滑轮的复合系统，需求解角加速度与绳张力。考察平行轴定理与牛顿第二定律的联合运用，计算量较大。</p>
+                <div class="card-meta"><span>通过率 45%</span><span class="hot">热度 8.1</span></div>
+              </div>
+            </div>
+            <div class="content-card">
+              <img class="card-img" src="https://picsum.photos/seed/mrdsfun-chem02/400/300" alt="化学竞赛有机推断题封面" width="400" height="300" loading="lazy">
+              <div class="card-body">
+                <span class="card-tag">化学</span>
+                <h3 class="card-title">化学竞赛 · 有机合成路线推断</h3>
+                <p class="card-desc">根据核磁共振氢谱与红外光谱数据推断未知化合物结构。涉及苯环取代模式判断与醛酮鉴别，需要结合反应条件反向推导。</p>
+                <div class="card-meta"><span>通过率 52%</span><span class="hot">热度 7.6</span></div>
+              </div>
+            </div>
+            <div class="content-card">
+              <img class="card-img" src="https://picsum.photos/seed/mrdsfun-algo12/400/300" alt="信息学联赛第12轮动态规划题封面" width="400" height="300" loading="lazy">
+              <div class="card-body">
+                <span class="card-tag">信息学</span>
+                <h3 class="card-title">信息学联赛第 12 轮 · 区间动态规划</h3>
+                <p class="card-desc">石子合并问题的变体，新增了合并代价与区间长度的非线性关系。需要重新设计状态转移方程，并优化至 O(n²) 复杂度。</p>
+                <div class="card-meta"><span>通过率 28%</span><span class="hot">热度 8.9</span></div>
+              </div>
+            </div>
+            <div class="content-card">
+              <img class="card-img" src="https://picsum.photos/seed/mrdsfun-math11/400/300" alt="数学竞赛数论题封面" width="400" height="300" loading="lazy">
+              <div class="card-body">
+                <span class="card-tag">数学</span>
+                <h3 class="card-title">数学竞赛 · 二次剩余与勒让德符号</h3>
+                <p class="card-desc">给定奇素数 p，判断整数 a 是否为模 p 的二次剩余。考察欧拉判别法与二次互反律的运用，适合数论方向进阶选手。</p>
+                <div class="card-meta"><span>通过率 18%</span><span class="hot">热度 8.4</span></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 3. 最新更新 / 今日赛程 -->
+        <section class="section" id="updates">
+          <div class="section-header">
+            <h2 class="section-title">今日赛程与更新</h2>
+          </div>
+          <ul class="compact-list">
+            <li>
+              <span class="list-time">今天 09:30</span>
+              <div class="list-content">
+                <div class="list-title">信息学联赛第 8 轮赛题开放评测</div>
+                <div class="list-desc">第 3 题图论最短路径已开放提交，评测机采用 2 倍时限，样例数据与题面同步更新。</div>
+              </div>
+            </li>
+            <li>
+              <span class="list-time">今天 10:00</span>
+              <div class="list-content">
+                <div class="list-title">数学奥林匹克邀请赛复赛成绩公布</div>
+                <div class="list-desc">复赛通过名单已发布，共 48 人晋级决赛。组合计数第 5 题平均分 12.4，为全场最低。</div>
+              </div>
+            </li>
+            <li>
+              <span class="list-time">今天 11:15</span>
+              <div class="list-content">
+                <div class="list-title">物理竞赛热身赛报名截止</div>
+                <div class="list-desc">11 月 9 日热身赛报名今日 18:00 截止，考察范围覆盖刚体力学与电磁感应。</div>
+              </div>
+            </li>
+            <li>
+              <span class="list-time">今天 13:00</span>
+              <div class="list-content">
+                <div class="list-title">化学竞赛有机推断专题直播</div>
+                <div class="list-desc">主讲人王思远在线拆解第 2 题合成路线，直播时长约 90 分钟，支持回放。</div>
+              </div>
+            </li>
+            <li>
+              <span class="list-time">今天 14:00</span>
+              <div class="list-content">
+                <div class="list-title">物理竞赛正赛开赛</div>
+                <div class="list-desc">共 5 道计算题，时长 3 小时。第 1 题涉及变力做功与动能定理综合。</div>
+              </div>
+            </li>
+            <li>
+              <span class="list-time">今天 16:30</span>
+              <div class="list-content">
+                <div class="list-title">信息学第 8 轮题解视频上线</div>
+                <div class="list-desc">陈立行讲解图论第 3 题，重点分析 Dijkstra 堆优化实现与边界条件处理。</div>
+              </div>
+            </li>
+            <li>
+              <span class="list-time">昨天 21:10</span>
+              <div class="list-content">
+                <div class="list-title">数学竞赛第 11 轮成绩复核完成</div>
+                <div class="list-desc">二次剩余题目评分标准调整，3 名选手分数修正，最终排名已同步更新。</div>
+              </div>
+            </li>
+            <li>
+              <span class="list-time">11 月 7 日</span>
+              <div class="list-content">
+                <div class="list-title">信息学联赛新增 Python 语言支持</div>
+                <div class="list-desc">自第 9 轮起，信息学联赛正式接受 Python 3.12 提交，时限为 C++ 的 3 倍。</div>
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <!-- 4. 分类入口 -->
+        <section class="section" id="categories">
+          <div class="section-header">
+            <h2 class="section-title">分类入口</h2>
+          </div>
+          <div class="category-grid">
+            <a href="/#featured" class="category-item">信息学<span>算法 · 数据结构</span></a>
+            <a href="/#featured" class="category-item">数学<span>代数 · 几何 · 组合</span></a>
+            <a href="/#featured" class="category-item">物理<span>力学 · 电磁学</span></a>
+            <a href="/#featured" class="category-item">化学<span>有机 · 实验分析</span></a>
+            <a href="/#analysis" class="category-item">题解分析<span>思路拆解</span></a>
+            <a href="/#ranking" class="category-item">排行榜<span>实时排名</span></a>
+            <a href="/#guide" class="category-item">新手入门<span>参赛指南</span></a>
+            <a href="/#news" class="category-item">赛事资讯<span>动态追踪</span></a>
+          </div>
+        </section>
+
+        <!-- 5. 深度解析正文 -->
+        <section class="section" id="analysis">
+          <div class="section-header">
+            <h2 class="section-title">深度解析</h2>
+          </div>
+          <div class="deep-analysis">
+            <h3>信息学竞赛中的图论题型演变</h3>
+            <p>近三年信息学联赛的图论题呈现出从单一算法向综合建模转变的趋势。2024 年的赛题还以标准的 Dijkstra 或 Floyd 为主，2025 年开始引入动态图与分层图的概念，2026 年第 8 轮的第 3 题则要求选手在带权有向图上同时处理最短路径与路径计数。这种变化对选手的模型抽象能力提出了更高要求。</p>
+            <p>以第 8 轮第 3 题为例，题面描述了一个物流配送网络，节点代表城市，边权代表运输成本，同时每条边还有一个附加属性表示该线路的最大载重量。题目要求求出从仓库到所有城市的最短路径，并在路径唯一时输出方案数。这实际上是在 Dijkstra 算法的基础上增加了路径计数的状态维护，需要在松弛操作中同步更新计数数组。</p>
+            <ul>
+              <li><strong>状态设计：</strong>dist[i] 表示最短距离，cnt[i] 表示最短路径条数，两者必须同步更新。</li>
+              <li><strong>更新规则：</strong>当发现更短路径时，cnt 重置为 1；当距离相等时，cnt 累加。</li>
+              <li><strong>边界处理：</strong>源点 cnt 初始化为 1，若源点不可达其他节点则输出 0。</li>
+            </ul>
+
+            <h3>数学竞赛中的组合计数难点</h3>
+            <p>组合计数一直是数学竞赛的得分分水岭。第 5 题的圆周三角形剖分问题表面上是一个卡特兰数模型，但题目附加了"每个三角形至少包含一条直径"的约束条件，使得标准递推公式不再适用。选手需要将问题分解为直径两侧的子问题，并利用对称性建立新的递推关系。</p>
+            <p>实际比赛中，这类题目的得分率通常低于 25%。主要原因在于选手容易陷入寻找封闭公式的思维定式，而忽略了通过小规模枚举发现规律的有效路径。对于 n ≤ 1000 的数据范围，动态规划的时间复杂度 O(n²) 是可接受的，因此递推方法比组合恒等式更稳妥。</p>
+
+            <h3>物理与化学竞赛的跨学科趋势</h3>
+            <p>物理竞赛第 3 题的刚体系统涉及多个物体的联动，需要同时运用牛顿第二定律与转动定律。化学竞赛第 2 题则要求从光谱数据反推结构，考察的是信息提取与假设验证的逻辑链。每日大赛mrdsfun 在整理这些题目时，会同步标注涉及的考点与平均得分，方便选手对照自身水平进行专项训练。</p>
+          </div>
+        </section>
+
+        <!-- 6. 体验指南 / 消费路径 -->
+        <section class="section" id="guide">
+          <div class="section-header">
+            <h2 class="section-title">体验指南</h2>
+          </div>
+          <div class="steps">
+            <div class="step-item">
+              <div class="step-title">先定位学科方向</div>
+              <div class="step-desc">根据自身主攻方向选择信息学、数学、物理或化学入口。如果尚未确定，建议先浏览各科近三轮的赛题通过率与平均分，找到与当前水平匹配的难度区间。</div>
+            </div>
+            <div class="step-item">
+              <div class="step-title">评估题目难度</div>
+              <div class="step-desc">每道赛题标注了通过率、平均分与考点标签。通过率低于 30% 的题目通常需要专项知识储备，建议先阅读深度解析中的思路拆解再动手尝试。</div>
+            </div>
+            <div class="step-item">
+              <div class="step-title">对比同类题目</div>
+              <div class="step-desc">利用分类入口下的标签索引，可以快速找到同一考点的历史赛题。对比不同轮次的出题角度与数据范围，有助于建立完整的解题模型。</div>
+            </div>
+            <div class="step-item">
+              <div class="step-title">参考排行榜定位</div>
+              <div class="step-desc">排行榜展示选手的得分与耗时分布。查看与自己水平相近选手的得分情况，可以更准确地判断当前题目的实际难度与自身排名位置。</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 7. FAQ -->
+        <section class="section" id="faq">
+          <div class="section-header">
+            <h2 class="section-title">常见问题</h2>
+          </div>
+          <div class="faq-list">
+            <details class="faq-item">
+              <summary>信息学联赛一般多久更新一轮赛题？</summary>
+              <div class="faq-answer">信息学联赛通常每两周更新一轮，每轮包含 4 至 5 道赛题，覆盖不同的算法方向。2026 年秋季赛季从 9 月持续到 12 月，共 8 轮，第 8 轮于 11 月 8 日结束。</div>
+            </details>
+            <details class="faq-item">
+              <summary>数学奥林匹克邀请赛和信息学联赛的赛题难度有什么区别？</summary>
+              <div class="faq-answer">数学奥林匹克邀请赛侧重证明与推导，单题分值高、步骤分占比大，对逻辑严密性要求极高；信息学联赛则以编程实现为主，考察算法设计与代码效率，评测结果客观明确。两者在思维训练上可以互补。</div>
+            </details>
+            <details class="faq-item">
+              <summary>第一次参加物理竞赛，从哪类题目开始练比较好？</summary>
+              <div class="faq-answer">建议从力学基础题入手，尤其是单物体的牛顿定律应用题。这类题目模型清晰、计算量适中，适合建立解题节奏。熟练后再逐步接触刚体系统与电磁感应综合题，避免一开始就被多物体联动问题打击信心。</div>
+            </details>
+            <details class="faq-item">
+              <summary>化学竞赛的有机推断题通常怎么评分？</summary>
+              <div class="faq-answer">有机推断题的评分主要看结构推断是否正确，同时关注推导过程的合理性。如果最终结构正确但中间步骤缺失，通常能拿到 60% 至 70% 的分数。部分赛区还会对官能团识别、反应条件判断等关键节点单独给分。</div>
+            </details>
+            <details class="faq-item">
+              <summary>每日大赛mrdsfun 的排行榜多久刷新一次？</summary>
+              <div class="faq-answer">排行榜在每轮赛事结束后 30 分钟内更新，实时榜单则在比赛期间每 10 分钟同步一次。排行榜数据包含总分、单题得分与完成用时，方便选手进行多维度对比。</div>
+            </details>
+            <details class="faq-item">
+              <summary>信息学比赛中 Python 和 C++ 的评测时限一样吗？</summary>
+              <div class="faq-answer">不一样。从 2026 年第 9 轮开始，信息学联赛对 Python 3.12 采用独立时限，通常为 C++ 时限的 3 倍。这在一定程度上弥补了 Python 运行速度较慢的劣势，但在大规模数据场景下仍需注意算法复杂度的选择。</div>
+            </details>
+          </div>
+        </section>
+
+        <!-- 8. 用户评论 -->
+        <section class="section" id="comments">
+          <div class="section-header">
+            <h2 class="section-title">用户讨论</h2>
+          </div>
+          <div class="comment-grid">
+            <div class="comment-card"><div class="comment-user"><span class="comment-avatar">林</span><span class="comment-name">林浩然</span></div>图论第 3 题的路径计数条件确实容易漏，我比赛时只写了最短距离，忘了 cnt 数组的初始化。</div>
+            <div class="comment-card"><div class="comment-user"><span class="comment-avatar">陈</span><span class="comment-name">陈思远</span></div>数学第 5 题的剖分约束条件读了三遍才看懂，后来用递推枚举过了 n ≤ 12 的样例才找到规律。</div>
+            <div class="comment-card"><div class="comment-user"><span class="comment-avatar">王</span><span class="comment-name">王雨桐</span></div>物理刚体那题计算量太大了，我算到一半发现滑轮转动惯量忘了加，直接重来。</div>
+            <div class="comment-card"><div class="comment-user"><span class="comment-avatar">赵</span><span class="comment-name">赵一鸣</span></div>化学有机推断的核磁数据给得挺全的，但苯环二取代的邻间对判断我纠结了好久。</div>
+            <div class="comment-card"><div class="comment-user"><span class="comment-avatar">周</span><span class="comment-name">周子涵</span></div>排行榜更新挺快的，刚交完题十分钟就刷出新排名了，这点比很多平台做得好。</div>
+            <div class="comment-card"><div class="comment-user"><span class="comment-avatar">吴</span><span class="comment-name">吴文博</span></div>信息学第 12 轮的区间 DP 题，状态转移方程我推了半小时，最后发现是合并代价算错了。</div>
+            <div class="comment-card"><div class="comment-user"><span class="comment-avatar">郑</span><span class="comment-name">郑可欣</span></div>数学二次剩余那道题我直接放弃了，勒让德符号的运算规则还没背熟，回去补数论基础了。</div>
+            <div class="comment-card"><div class="comment-user"><span class="comment-avatar">孙</span><span class="comment-name">孙立群</span></div>物理热身赛的电磁感应题和去年风格很像，感觉可以多刷刷往年的类似题目。</div>
+            <div class="comment-card"><div class="comment-user"><span class="comment-avatar">马</span><span class="comment-name">马俊杰</span></div>Python 时限放宽之后确实舒服多了，之前用 Python 做图论题总是卡在最后几个点。</div>
+            <div class="comment-card"><div class="comment-user"><span class="comment-avatar">黄</span><span class="comment-name">黄诗雅</span></div>化学直播回放看了一遍，王老师讲的合成路线拆解很清晰，尤其是逆合成分析那部分。</div>
+            <div class="comment-card"><div class="comment-user"><span class="comment-avatar">徐</span><span class="comment-name">徐天宇</span></div>排行榜前几名的得分也太恐怖了，信息学 280 分是满分吗？我看第一名的提交记录全是 0 毫秒。</div>
+            <div class="comment-card"><div class="comment-user"><span class="comment-avatar">何</span><span class="comment-name">何佳琪</span></div>数学复赛的通过率才 12%？感觉今年题确实比去年难，第 3 题的不等式放缩我完全没思路。</div>
+            <div class="comment-card"><div class="comment-user"><span class="comment-avatar">高</span><span class="comment-name">高志远</span></div>信息学第 8 轮的题解视频更新挺及时的，下午就出了，陈立行讲的堆优化实现很实用。</div>
+            <div class="comment-card"><div class="comment-user"><span class="comment-avatar">罗</span><span class="comment-name">罗雨欣</span></div>物理刚体题我得了 8 分，虽然没做全但那道题确实让我把平行轴定理彻底搞懂了。</div>
+            <div class="comment-card"><div class="comment-user"><span class="comment-avatar">梁</span><span class="comment-name">梁子轩</span></div>感觉信息学第 12 轮的区间 DP 比第 8 轮的图论简单一点，至少状态定义比较直接。</div>
+          </div>
+        </section>
+
+        <!-- 9. 相关资讯 -->
+        <section class="section" id="news">
+          <div class="section-header">
+            <h2 class="section-title">赛事资讯</h2>
+          </div>
+          <div class="news-list">
+            <div class="news-item">
+              <span class="news-date">2026-11-08</span>
+              <div class="news-body">
+                <div class="news-title">信息学联赛第 8 轮第 3 题通过率创赛季新低</div>
+                <div class="news-summary">图论最短路径题的通过率仅为 34%，主要失分点集中在路径计数数组的初始化与更新逻辑上。</div>
+              </div>
+            </div>
+            <div class="news-item">
+              <span class="news-date">2026-11-07</span>
+              <div class="news-body">
+                <div class="news-title">数学奥林匹克邀请赛复赛晋级名单公布</div>
+                <div class="news-summary">48 名选手晋级决赛，组合计数第 5 题平均分 12.4，成为复赛阶段区分度最高的题目。</div>
+              </div>
+            </div>
+            <div class="news-item">
+              <span class="news-date">2026-11-06</span>
+              <div class="news-body">
+                <div class="news-title">物理竞赛热身赛报名人数突破 1200 人</div>
+                <div class="news-summary">11 月 9 日热身赛报名将于今日 18:00 截止，考察范围覆盖刚体力学与电磁感应两大模块。</div>
+              </div>
+            </div>
+            <div class="news-item">
+              <span class="news-date">2026-11-05</span>
+              <div class="news-body">
+                <div class="news-title">信息学联赛宣布第 9 轮起支持 Python 3.12 提交</div>
+                <div class="news-summary">Python 时限调整为 C++ 的 3 倍，官方表示此举旨在降低语言门槛，让更多选手专注于算法设计本身。</div>
+              </div>
+            </div>
+            <div class="news-item">
+              <span class="news-date">2026-11-04</span>
+              <div class="news-body">
+                <div class="news-title">化学竞赛有机推断专题直播回放上线</div>
+                <div class="news-summary">王思远主讲的第 2 题合成路线拆解已可回放，重点讲解核磁共振氢谱的解析方法与逆合成分析策略。</div>
+              </div>
+            </div>
+            <div class="news-item">
+              <span class="news-date">2026-11-02</span>
+              <div class="news-body">
+                <div class="news-title">数学竞赛第 11 轮成绩复核结果公布</div>
+                <div class="news-summary">二次剩余题目评分标准调整后，3 名选手分数修正，最终排名已同步至排行榜页面。</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 10. 相关推荐 -->
+        <section class="section" id="related">
+          <div class="section-header">
+            <h2 class="section-title">相关推荐</h2>
+          </div>
+          <div class="tag-cloud">
+            <a href="/#featured" class="tag-item">信息学图论专项</a>
+            <a href="/#featured" class="tag-item">数学组合计数</a>
+            <a href="/#featured" class="tag-item">物理刚体力学</a>
+            <a href="/#featured" class="tag-item">化学有机推断</a>
+            <a href="/#analysis" class="tag-item">区间动态规划题解</a>
+            <a href="/#analysis" class="tag-item">二次剩余与勒让德符号</a>
+            <a href="/#guide" class="tag-item">新手参赛路径</a>
+            <a href="/#ranking" class="tag-item">实时排行榜</a>
+          </div>
+        </section>
+
+        <!-- 11. 补充板块：排行榜 -->
+        <section class="section" id="ranking">
+          <div class="section-header">
+            <h2 class="section-title">热门榜单</h2>
+          </div>
+          <table class="rank-table">
+            <thead>
+              <tr><th>排名</th><th>选手</th><th>学科</th><th>总分</th><th>更新时间</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>1</td><td class="name">张明远</td><td>信息学</td><td class="score">280</td><td>2026-11-08 14:20</td></tr>
+              <tr><td>2</td><td class="name">李思睿</td><td>数学</td><td class="score">265</td><td>2026-11-08 14:15</td></tr>
+              <tr><td>3</td><td class="name">王皓宇</td><td>物理</td><td class="score">258</td><td>2026-11-08 14:10</td></tr>
+              <tr><td>4</td><td class="name">陈雨菲</td><td>化学</td><td class="score">251</td><td>2026-11-08 14:05</td></tr>
+              <tr><td>5</td><td class="name">刘子豪</td><td>信息学</td><td class="score">247</td><td>2026-11-08 13:58</td></tr>
+              <tr><td>6</td><td class="name">赵梦琪</td><td>数学</td><td class="score">242</td><td>2026-11-08 13:52</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+      </main>
+
+      <!-- 右侧辅助栏 -->
+      <aside class="right-aside">
+        <div class="aside-card">
+          <h3>实时热榜</h3>
+          <ul class="rank-list">
+            <li><span class="rank-num top3">1</span><div class="rank-info"><div class="rank-name">信息学第 8 轮图论题</div><div class="rank-meta">通过率 34% · 热度 9.2</div></div></li>
+            <li><span class="rank-num top3">2</span><div class="rank-info"><div class="rank-name">数学组合计数第 5 题</div><div class="rank-meta">通过率 21% · 热度 8.7</div></div></li>
+            <li><span class="rank-num top3">3</span><div class="rank-info"><div class="rank-name">信息学区间 DP 第 12 轮</div><div class="rank-meta">通过率 28% · 热度 8.9</div></div></li>
+            <li><span class="rank-num">4</span><div class="rank-info"><div class="rank-name">物理刚体转动惯量</div><div class="rank-meta">通过率 45% · 热度 8.1</div></div></li>
+            <li><span class="rank-num">5</span><div class="rank-info"><div class="rank-name">数学二次剩余与勒让德符号</div><div class="rank-meta">通过率 18% · 热度 8.4</div></div></li>
+          </ul>
+        </div>
+        <div class="aside-card">
+          <h3>最新更新流</h3>
+          <ul class="update-stream">
+            <li><span class="update-time">09:30</span> 信息学第 8 轮第 3 题开放评测</li>
+            <li><span class="update-time">10:00</span> 数学复赛晋级名单公布</li>
+            <li><span class="update-time">11:15</span> 物理热身赛报名今日截止</li>
+            <li><span class="update-time">13:00</span> 化学有机推断直播开始</li>
+            <li><span class="update-time">14:00</span> 物理竞赛正赛开赛</li>
+            <li><span class="update-time">16:30</span> 信息学第 8 轮题解视频上线</li>
+          </ul>
+        </div>
+        <div class="aside-card">
+          <h3>快速搜索</h3>
+          <div class="search-box">
+            <input type="text" id="search-input" placeholder="搜索赛题、选手、学科…" aria-label="搜索赛题">
+            <button onclick="performSearch()">查找</button>
+          </div>
+          <div id="search-result"></div>
+        </div>
+      </aside>
+
+    </div>
+    <!-- 三栏布局结束 -->
+
+  </div>
+  <!-- 主容器结束 -->
+
+  <!-- 页脚 -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <span class="brand-text">每日大赛mrdsfun</span>
+          <p>聚合信息学、数学、物理、化学竞赛的每日赛程、题解与排行榜，为竞赛选手提供清晰的内容导航与深度分析。</p>
+        </div>
+        <div class="footer-col">
+          <h4>学科频道</h4>
+          <ul>
+            <li><a href="/#featured">信息学竞赛</a></li>
+            <li><a href="/#featured">数学奥林匹克</a></li>
+            <li><a href="/#featured">物理竞赛</a></li>
+            <li><a href="/#featured">化学竞赛</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>内容栏目</h4>
+          <ul>
+            <li><a href="/#updates">今日赛程</a></li>
+            <li><a href="/#analysis">深度解析</a></li>
+            <li><a href="/#ranking">排行榜</a></li>
+            <li><a href="/#faq">常见问题</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>社区互动</h4>
+          <ul>
+            <li><a href="/#comments">用户讨论</a></li>
+            <li><a href="/#news">赛事资讯</a></li>
+            <li><a href="/#related">相关推荐</a></li>
+            <li><a href="/#guide">体验指南</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 每日大赛mrdsfun 内容聚合示例 · 部分内容为示例数据，仅用于展示页面结构</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // 本地搜索功能：对主内容区的卡片标题、列表条目、FAQ 问题进行简单文本匹配
+    function performSearch() {
+      var input = document.getElementById('search-input');
+      var query = input.value.trim().toLowerCase();
+      var resultContainer = document.getElementById('search-result');
+      if (!query) {
+        resultContainer.innerHTML = '<div class="no-result">请输入关键词进行搜索</div>';
+        return;
+      }
+      // 收集可搜索元素
+      var searchable = document.querySelectorAll('.card-title, .list-title, .faq-item summary, .news-title, .comment-card');
+      var matches = [];
+      searchable.forEach(function(el) {
+        var text = el.textContent.toLowerCase();
+        if (text.indexOf(query) !== -1) {
+          matches.push(el.textContent.trim().substring(0, 60));
+        }
+      });
+      // 去重
+      matches = [...new Set(matches)];
+      if (matches.length === 0) {
+        resultContainer.innerHTML = '<div class="no-result">未找到与“‘ + input.value + '”相关的内容，试试“图论”“组合”“刚体”或“有机”。</div>';
+      } else {
+        var html = '<div style="font-size:13px;color:var(--text-secondary);margin-top:8px;line-height:1.7;">';
+        matches.slice(0, 5).forEach(function(m) {
+          html += '<div style="padding:6px 0;border-bottom:1px solid var(--border);">' + m + '…</div>';
+        });
+        if (matches.length > 5) {
+          html += '<div style="padding-top:6px;color:var(--text-tertiary);">共 ' + matches.length + ' 条结果，仅展示前 5 条</div>';
+        }
+        html += '</div>';
+        resultContainer.innerHTML = html;
+      }
+    }
+
+    // 回车触发搜索
+    document.getElementById('search-input').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        performSearch();
+      }
+    });
+
+    // 左侧索引高亮跟随滚动（简单实现，不作为核心依赖）
+    window.addEventListener('scroll', function() {
+      // 预留，保持简洁
+    });
+  </script>
+</body>
+            </html>
